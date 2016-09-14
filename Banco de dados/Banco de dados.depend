@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1473791655 source:c:\users\anderson.usuário\documents\github\projeto-bd\banco de dados\sources\tabelas.c
+1473872497 source:c:\users\anderson.usuário\documents\github\projeto-bd\banco de dados\sources\tabelas.c
 	"../headers/tabelas.h"
 	<stdlib.h>
 	<stdio.h>

@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "headers/tabelas.h"
 
+//Teste
+
 int main()
 {
     int opcao;
@@ -19,13 +21,16 @@ int main()
             case 1:{
                 char nome[20];
                 char tipo[20];
+                unsigned int cod;
 
                 printf("Nome: ");
                 scanf("%s", nome);
                 printf("Tipo: ");
                 scanf("%s", tipo);
+                printf("Codigo: ");
+                scanf("%d", &cod);
 
-                cadastar_cliente(nome, tipo);
+                cadastar_cliente(nome, tipo, cod);
 
                 break;
             }

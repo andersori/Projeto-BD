@@ -19,12 +19,18 @@ typedef struct{
 
 typedef struct{
     unsigned int cod_venda;
-    char* data;
-    unsigned int qtd;
+    char* data_do_fornecimento;
+    unsigned int qtd_produto;
     boolean pago;
+
+    unsigned int cod_produto;   //NOVOS: para saber qual o produto que esta sendo vendido.
+    unsigned int cod_cliente;   //NOVOS: para saber quem é foi o cliente.
+
 }Fornecimento;
 
 
-boolean cadastar_cliente(char*, char*);
+void cadastar_cliente(char*, char*, unsigned int);
+void cadastar_produto(unsigned int, double, char*);
+void cadastar_fornecimento(unsigned int, char*, unsigned int, boolean, unsigned int, unsigned int);
 
 #endif // TABELAS_H_INCLUDED

@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1473986695 source:c:\users\anderson.usuário\documents\github\projeto-bd\banco de dados c++\main.cpp
+	<iostream>
+	<fstream>
+

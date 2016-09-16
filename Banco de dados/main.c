@@ -7,7 +7,7 @@
 int main()
 {
     int opcao;
-
+    iniciar_valores_das_qtd();
     do{
         system("cls");
         printf("1 - Cadastrar cliente\n");
@@ -39,6 +39,8 @@ int main()
             }
             case 3:{
                 break;
+            }
+            case 7:{
             }
             default:{
                 break;

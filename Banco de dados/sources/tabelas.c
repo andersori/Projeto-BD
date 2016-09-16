@@ -3,6 +3,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+//Algumas variaveis globais
+unsigned int qtd_clientes = 0;
+unsigned int qtd_produtos = 0;
+
 //---------   ALGUMAS FUNÇÕES QUE SÃO NECESSARIAS PARA A MANIPULAÇÃO DOS DADOS DOS ARQUIVOS ------------//
 unsigned int separa (unsigned int* v, unsigned int p, unsigned int r){//necessario para o algoritmo de ordenação
    unsigned int c = v[p], i = p+1, j = r, t;
@@ -52,18 +56,10 @@ boolean pesquisa_binaria(unsigned int* vetor, unsigned int tamanho, unsigned int
 
 //-------------------------------------------------------------------------------------------------------//
 
-//Algumas variaveis globais
-unsigned int qtd_clientes = 0;
-unsigned int qtd_produtos = 0;
-
 void cadastar_cliente(char* nome, char* tipo, unsigned int codigo){
-    Cliente cli;            //Definindo a estrutura para
-    cli.codigo = codigo;    //deixar com uma estrutura bem
-    cli.nome = nome;        //definida no arquivo
-    cli.tipo = nome;        //
-
-    FILE* arquivo = fopen("arquivos/cliente.txt", "a+b");   //Abre o arquivo para escrita no final do arquivo 'a' e 'b' para escrita em binario.
-                                                            //Não apaga o conteúdo pré-existente.
+    FILE* arquivo;
+    arquivo = fopen("arquivos/cliente.txt", "a+");   //Abre o arquivo para escrita no final do arquivo 'a' e 'b' para escrita em binario.
+                                                    //Não apaga o conteúdo pré-existente.
 
     if( arquivo == NULL){   //Se o ponteiro para o arquivo estiver apontando para NULL, o arquivo naão foi aberto.
         printf("O arquivo nao pode ser aberto. A operacao nao foi concluida!\n");
@@ -72,17 +68,13 @@ void cadastar_cliente(char* nome, char* tipo, unsigned int codigo){
         return;
     }
 
-    //                  FUNCIONAMENTO DO fwrite
-    //&cli -> referencia para a variavel que deverá ser armazenada no arquivo
-    //sizeof(Cliente) -> tamanho do dado que será armazenado no arquivo
-    //1 -> só será armzenada uma variavel, se fosse um vetor ai deveria dizer quantas posições seriam armazenadas no arquivo
-    //arquivo -> nome do ponteiro que esta apontando para o arquivo
+    fprintf(arquivo, "%s\n%s\n%d\n", nome, tipo, codigo);
+    qtd_clientes++; //Almenta a quantidade de clientes ja cadastrados
 
-    fwrite(&cli, sizeof(Cliente), 1, arquivo);  //Escreve a estrutura completa no arquivo
+    fseek(arquivo,0,SEEK_SET);
+    fprintf(arquivo, "%d", qtd_clientes);
+
     fclose(arquivo);    //Fecha o arquivo, pois não ha necessidade de manter ele aberto
-    arquivo = NULL;
-
-    qtd_clientes++;     //Almenta a quantidade de clientes ja cadastrados
 }
 
 void cadastar_produto(unsigned int codigo, double preco, char* descricao){
@@ -112,7 +104,7 @@ void cadastar_produto(unsigned int codigo, double preco, char* descricao){
 void cadastar_fornecimento(unsigned int cod_venda, char* data_do_fornecimento,
                            unsigned int qtd_produtos_comprados, boolean pago, unsigned int cod_produto, unsigned int cod_cliente){
 
-    FILE* arquivo_fornecimento = fopen("arquivos/fornecimento.txt", "a+b"); //Abre o arquivo para escrita no final do arquivo 'a'.
+    FILE* arquivo_fornecimento = fopen("arquivos/fornecimento.txt", "ab"); //Abre o arquivo para escrita no final do arquivo 'a'.
                                                                             //Não apaga o conteúdo pré-existente.
 
     //Arquivos para efetuar uma busca para determinar se um cliente estar ou nao nos arquivos de PRODUTO e CLIENTE
@@ -136,19 +128,21 @@ void cadastar_fornecimento(unsigned int cod_venda, char* data_do_fornecimento,
     unsigned int* list_cod_cli = malloc(sizeof(unsigned int) * qtd_clientes);
     unsigned int* list_cod_pro = malloc(sizeof(unsigned int) * qtd_produtos);
 
-    if((fread(list_cod_cli, sizeof(unsigned int), qtd_clientes, arquivo_cliente) != qtd_clientes) &&
-       (fread(list_cod_pro, sizeof(unsigned int), qtd_produtos, arquivo_produto) != qtd_produtos)
-        )
-    {
-        arquivo_fornecimento = NULL;
-        arquivo_cliente = NULL;
-        arquivo_produto = NULL;
-        printf("Todos os dados forão lidos\n");
-        system("pause");
-        return;
+
+    unsigned int i;
+    for(i = 0; i < qtd_clientes; i++){
+        fread(list_cod_cli, sizeof(unsigned int), 1, arquivo_cliente);
+        fseek(arquivo_cliente, sizeof(char*), SEEK_CUR);
+        fseek(arquivo_cliente, sizeof(char*), SEEK_CUR);
     }
 
+    for(i = 0; i < qtd_clientes; i++){
+        printf("%d ", list_cod_cli[i]);
+    }
+    printf("\n");
 
+
+    quicksort(list_cod_cli,0,qtd_clientes);
 
 
     free(list_cod_cli);
@@ -161,6 +155,19 @@ void cadastar_fornecimento(unsigned int cod_venda, char* data_do_fornecimento,
 }
 
 
+
+void iniciar_valores_das_qtd(){
+    FILE* arquivo;
+
+    arquivo = fopen("arquivos/cliente.txt", "r");
+    fscanf(arquivo,"%d",&qtd_clientes);
+    fclose(arquivo);
+
+    arquivo = fopen("arquivos/produto.txt", "r");
+    fscanf(arquivo,"%d",&qtd_produtos);
+    fclose(arquivo);
+
+}
 
 
 

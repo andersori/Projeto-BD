@@ -7,19 +7,19 @@ typedef enum{               //Definindo um enum para usar o "true" e o "false", 
 
 typedef struct{             //Estrutura da tabela Cliente
     unsigned int codigo;    //O codigo é um número inteiro não negativo
-    char* nome;             //Cadeia de caracteres
-    char* tipo;             //Cadeia de caracteres
+    char* nome[20];             //Cadeia de caracteres
+    char* tipo[20];             //Cadeia de caracteres
 }Cliente;
 
 typedef struct{
     unsigned int codigo;
-    char* descricao;
+    char* descricao[50];
     double valor;
 }Produto;
 
 typedef struct{
     unsigned int cod_venda;
-    char* data_do_fornecimento;
+    char* data_do_fornecimento[10];
     unsigned int qtd_produto;
     boolean pago;
 
@@ -33,4 +33,5 @@ void cadastar_cliente(char*, char*, unsigned int);
 void cadastar_produto(unsigned int, double, char*);
 void cadastar_fornecimento(unsigned int, char*, unsigned int, boolean, unsigned int, unsigned int);
 
+void iniciar_valores_das_qtd();
 #endif // TABELAS_H_INCLUDED

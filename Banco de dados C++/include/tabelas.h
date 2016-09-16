@@ -10,10 +10,8 @@ private:
     string nome;
     string tipo;
 public:
-    void set_nome(string);
-    void set_tipo(string);
-    void set_codigo(unsigned int);
-    void salvar_no_arquivo(string, string, unsigned int);
+    Cliente(string, string, unsigned int);
+    void salvar_no_arquivo();
 };
 
 class Produto{
@@ -22,7 +20,8 @@ private:
     string nome;
     double valor;
 public:
-    void salvar_no_arquivo(string, unsigned int, double);
+    Produto(string, double, unsigned int);
+    void salvar_no_arquivo();
 };
 
 class Fornecimento{
@@ -34,7 +33,8 @@ private:
     string nome_cliente;
     string nome_produto;
 public:
-    void salvar_no_arquivo(unsigned int,string, unsigned int, bool, string, string);
+    Fornecimento(unsigned int,string, unsigned int, bool, string, string);
+    void salvar_no_arquivo();
 };
 
 #endif // TABELAS_H

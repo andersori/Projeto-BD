@@ -3,3 +3,17 @@
 	<iostream>
 	<fstream>
 
+1473991513 source:c:\users\andreza\documents\github\projeto-bd\banco de dados c++\main.cpp
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	"tabelas.h"
+
+1473991780 c:\users\andreza\documents\github\projeto-bd\banco de dados c++\include\tabelas.h
+	<string>
+
+1473991746 source:c:\users\andreza\documents\github\projeto-bd\banco de dados c++\src\tabelas.cpp
+	"tabelas.h"
+	<fstream>
+	<iostream>
+

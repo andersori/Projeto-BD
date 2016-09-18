@@ -118,11 +118,11 @@ void Fornecimento::salvar_no_arquivo(Inf_arquivos* informacoes){
     arquivo << this->cod_venda << endl;
     arquivo << this->data_do_fornecimeno << endl;
     arquivo << this->pago << endl;
-    arquivo << this->cliente.get_codigo() << endl;
+    arquivo << this->cod_cliente << endl;
 
     vector<inf_produtos>::iterator it;
     for(it = this->produtos.begin(); it != this->produtos.end();it++){
-        arquivo << (*it).produto.get_codigo() << " " << (*it).qtd << " " << (*it).valor << endl;
+        arquivo << (*it).cod_produto << "\n" << (*it).qtd << "\n" << (*it).valor << endl;
     }
     arquivo << "#\n";
     arquivo.close();
@@ -139,9 +139,11 @@ void Fornecimento::salvar_no_arquivo(Inf_arquivos* informacoes){
 Inf_arquivos::Inf_arquivos(){
     ifstream arq_clientes;  //Variaveis de manipulação de arquivos
     ifstream arq_produtos;  // --       --    --       --    --
+    ifstream arq_fornecimento; //  --  --     --       --    --
 
     arq_clientes.open("Arquivos/cliente.txt", ios::in); //Abrindo os arquivos no caminhos especificado entre aspas
     arq_produtos.open("Arquivos/produto.txt", ios::in); //e abrindo o arquvos no modo "ios::in" que é somente para leitura.
+    arq_fornecimento.open("Arquivos/fornecimento.txt", ios::in);
 
     if(arq_clientes.is_open()){ //se coceguio abrir
         while(!arq_clientes.eof()){ //Enquanto não for o final do arquivo fique lendo seus dados
@@ -177,7 +179,7 @@ Inf_arquivos::Inf_arquivos(){
         arq_clientes.close();   //Fechando o arquivo
     }
     else{
-        cout<<"Não foi possivel abrir o aquivo!"<<endl;
+        cout<<"Não foi possivel abrir o aquivo clientes!"<<endl;
     }
 
     /*Tentando ler os produtos cadastrados*/
@@ -213,6 +215,94 @@ Inf_arquivos::Inf_arquivos(){
         cout<<endl<<endl;
 
         arq_produtos.close();
+    }
+    else{
+        cout<<"Não foi possivel abrir o arquivo de produtos!"<<endl;
+    }
+
+    if(arq_fornecimento.is_open()){
+        while(!arq_fornecimento.eof()){
+
+            Fornecimento fornecimento;
+
+            string cod_venda_string;
+            unsigned int cod_venda_int;
+
+            string data_do_fornecimeno;
+
+            string pago_string;
+            bool pago_bool;
+
+            string cod_cliente_string;
+            unsigned int cod_cliente_int;
+
+            getline(arq_fornecimento, cod_venda_string);
+
+            if(cod_venda_string[0] == '\0'){
+                break;
+            }
+
+            getline(arq_fornecimento, data_do_fornecimeno);
+            getline(arq_fornecimento, pago_string);
+            getline(arq_fornecimento, cod_cliente_string);
+
+            cod_venda_int = atoi(cod_venda_string.c_str());
+            pago_bool = atoi(pago_string.c_str());
+            cod_cliente_int = atoi(cod_cliente_string.c_str());
+
+
+            unsigned int cod_produto_int;
+            unsigned int qtd_int;
+            double valor_double;
+
+            while(true){
+                string cod_produto_string;
+                string qtd_string;
+                string valor_string;
+
+                getline(arq_fornecimento, cod_produto_string);
+
+                if(cod_produto_string[0] != '#'){
+                    getline(arq_fornecimento, qtd_string);
+                    getline(arq_fornecimento, valor_string);
+
+                    cod_produto_int = atoi(cod_produto_string.c_str());
+                    qtd_int = atoi(qtd_string.c_str());
+                    valor_double = atof(valor_string.c_str());
+                }
+                else{
+                    break;
+                }
+
+                Fornecimento::inf_produtos inf;
+                inf.cod_produto = cod_produto_int;
+                inf.qtd = qtd_int;
+                inf.valor = valor_double;
+
+                fornecimento.produtos.push_back(inf);
+
+                //cout<<"aqui"<<endl;
+                //cout<<cod_produto_int<< " "<< qtd_int<<" "<<valor_double<<endl;
+                //system("pause");
+            }
+
+
+            fornecimento.cod_cliente = cod_cliente_int;
+            fornecimento.cod_venda = cod_venda_int;
+            fornecimento.data_do_fornecimeno = data_do_fornecimeno;
+            fornecimento.pago = pago_bool;
+
+            this->fornecimentos.push_back(fornecimento);
+        }
+
+        cout<<"------------------Arquivo fornecimento.txt-------------"<<endl<<endl;
+        vector<Fornecimento>::iterator it;
+        for(it = this->fornecimentos.begin(); it != this->fornecimentos.end(); it++){
+            cout<<(*it).cod_venda <<", "<<(*it).data_do_fornecimeno << ", "<<(*it).cod_cliente<<endl;
+        }
+        cout<<endl<<endl;
+
+        arq_fornecimento.close();
     }
     else{
         cout<<"Não foi possivel abrir o arquivo!"<<endl;

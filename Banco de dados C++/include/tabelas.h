@@ -59,7 +59,7 @@ public:
 
     //Estrutura com informações sobre um determinado produto no fornecimento
     struct inf_produtos{
-        Produto produto;
+        unsigned int cod_produto;
         unsigned int qtd;
         double valor;
     };
@@ -67,7 +67,7 @@ public:
     unsigned int cod_venda;
     string data_do_fornecimeno;
     bool pago;
-    Cliente cliente;                //quem está recebendo o fornecimento
+    unsigned int cod_cliente;                //quem está recebendo o fornecimento
     vector<inf_produtos> produtos;  //lista dos produtos do fornecimento
 
     //OPERACOES
@@ -79,6 +79,7 @@ public:
     Inf_arquivos();
     vector<Produto> produtos;
     vector<Cliente> clientes;
+    vector<Fornecimento> fornecimentos;
 };
 
 #endif // TABELAS_H

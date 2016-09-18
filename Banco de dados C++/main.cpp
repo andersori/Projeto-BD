@@ -118,9 +118,7 @@ int main()
                         cout<<"Valor unitario das caixa: ";
                         cin>>pro.valor;
 
-                        pro.produto.set_nome((*it).get_nome());         //colocando o nome do produto na estrutura criada la em cima
-                                                                        //isso é necessario pois nos so tinhamos o codigo do produto
-                                                                        //ai depois de encontrado esse produto podemos saber o nome dele
+                        pro.cod_produto = cod_produto;
 
                         fornecimento.produtos.push_back(pro);   //adicionando esse produto com suas informações na lista de produtos
                                                                 //desse fornecimento.

@@ -20,7 +20,13 @@ int main()
         cout<<"1 - Cadastrar cliente "<<endl;
         cout<<"2 - Cadastrar produto "<<endl;
         cout<<"3 - Cadastrar fornecimento "<<endl;
-        cout<<"8 - Sair"<<endl;
+        cout<<"4 - Relatorio de um fornecimento "<<endl;
+        cout<<"5 - Valor total do fornecimento "<<endl;
+        cout<<"6 - Quais produtos foram entregues num determinado fornecimento "<<endl;
+        cout<<"7 - Quais clientes estão devendo "<<endl;
+        cout<<"8 - Listar produtos "<<endl;
+        cout<<"9 - Listar clientes "<<endl;
+        cout<<"10 - Sair"<<endl;
         cout<<"->";
         cin>>opcao;
 
@@ -76,19 +82,55 @@ int main()
             }
             case 3:{
                 Fornecimento fornecimento;  //criando um objeto fornecimento
-                unsigned int cod_cliente;
+
+                system("cls");  //limpando a tela(so no windows)
+                cout<<"--CADASTRAR FORNECIMENTO--"<<endl<<endl;
 
                 cout<<"Codigo da venda: ";
                 cin>>fornecimento.cod_venda;    //requisitando o codigo da venda
 
+                bool conti;
+                while(true){
+                    unsigned int cod_cliente;
+
+                    cout<<"Codigo do cliente: ";
+                    cin>>cod_cliente;
+                    //cin>>fornecimento.cod_cliente;
+
+                    Cliente cli;
+                    cli.set_codigo(cod_cliente);
+
+                    vector<Cliente>::iterator it_cli;
+                    it_cli = find(informacoes.clientes.begin(), informacoes.clientes.end(), cli);
+
+                    if(it_cli != informacoes.clientes.end()){
+                        fornecimento.cod_cliente = cod_cliente;
+                        break;
+                    }
+                    else{
+
+                        cout<<"Codigo invalido!!!"<<endl<<"'1' para digitar outro codigo"<<endl<<"'0' para cancelar o cadastrar o fornecimento: "<<endl;
+                        cin>>conti;
+
+                        if(!conti){
+                            break;
+                        }
+                    }
+
+                }
+
+                if(!conti){
+                    break;
+                }
+
                 cout<<"Data do fornceminto: ";
                 cin>>fornecimento.data_do_fornecimeno;  //esperando a data do fornecimento
 
+                cout<<"Data da entrega: ";
+                cin>>fornecimento.data_da_entrega;
+
                 cout<<"Digite '1' se ja foi pago ou '0' se ainda vai ser pago: ";
                 cin>>fornecimento.pago;
-
-                cout<<"Codigo do cliente: ";
-                cin>>cod_cliente;
 
                 cout<<endl<<endl<<"--Produtos do fornecimento--"<<endl;
 
@@ -148,13 +190,74 @@ int main()
 
                 break;
             }
+            case 4:{
+                unsigned int cod_venda;
+                cout<<"Digite o codigo da venda: "<<endl;
+                cin>>cod_venda;
+
+                informacoes.relatorio_de_venda(cod_venda);
+
+                break;
+            }
+            case 5:{
+                unsigned int cod_venda;
+
+                system("cls");  //limpando a tela(so no windows)
+                cout<<"--VALOR DE UM FORNECIMENTO--"<<endl<<endl;
+
+                cout<<"Digite o codigo da venda: ";
+                cin>>cod_venda;
+
+                informacoes.valor_total_fornecimento(cod_venda);
+                break;
+            }
+            case 6:{
+                system("cls");  //limpando a tela(so no windows)
+                cout<<"--LISTA DE PRODUTOS DE UM FORNECIMENTO--"<<endl<<endl;
+
+                unsigned int cod_venda;
+                cout<<"Codigo da venda: ";
+                cin>>cod_venda;
+
+                informacoes.listar_prod_venda(cod_venda);
+
+                break;
+            }
+            case 7:{
+                system("cls");  //limpando a tela(so no windows)
+                cout<<"--LISTA CLIENTES DEVEDORES--"<<endl<<endl;
+
+                informacoes.listar_devedores();
+
+                break;
+            }
+            case 8:{
+                system("cls");  //limpando a tela(so no windows)
+                cout<<"--LISTA DE PRODUTOS--"<<endl<<endl;
+
+                informacoes.listar_produtos();
+
+                break;
+            }
+            case 9:{
+                system("cls");  //limpando a tela(so no windows)
+                cout<<"--LISTA DE CLIENTES--"<<endl<<endl;
+                informacoes.listar_clientes();
+
+                break;
+            }
+            case 10:{
+                break;
+            }
             default:{
+                cout<<"Operacao invalida!!!"<<endl;
+                system("pause");
                 break;
             }
         }
 
         system("cls");
-    }while(opcao != 8);
+    }while(opcao != 10);
 
     cout << "Bye world!" << endl;
     return 0;

@@ -3,6 +3,8 @@
 
 #include <string>
 #include <vector>
+#include <algorithm>
+
 using namespace std;
 class Inf_arquivos;
 
@@ -14,6 +16,7 @@ private:
 public:
     Cliente();
     Cliente(string, string, unsigned int);
+    bool operator==(const Cliente&)const;
 
     //GETS
     string get_nome();
@@ -56,6 +59,7 @@ public:
 class Fornecimento{
 public:
     Fornecimento();
+    bool operator==(const Fornecimento&) const;
 
     //Estrutura com informações sobre um determinado produto no fornecimento
     struct inf_produtos{
@@ -66,6 +70,7 @@ public:
 
     unsigned int cod_venda;
     string data_do_fornecimeno;
+    string data_da_entrega;
     bool pago;
     unsigned int cod_cliente;                //quem está recebendo o fornecimento
     vector<inf_produtos> produtos;  //lista dos produtos do fornecimento
@@ -77,9 +82,17 @@ public:
 class Inf_arquivos{
 public:
     Inf_arquivos();
+
     vector<Produto> produtos;
     vector<Cliente> clientes;
     vector<Fornecimento> fornecimentos;
+
+    void relatorio_de_venda(unsigned int);
+    void valor_total_fornecimento(unsigned int);
+    void listar_prod_venda(unsigned int);
+    void listar_devedores();
+    void listar_clientes();
+    void listar_produtos();
 };
 
 #endif // TABELAS_H

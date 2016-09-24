@@ -1,19 +1,16 @@
 # depslib dependency file v1.0
-1474247639 source:c:\users\anderson.usuário\documents\github\projeto-bd\banco de dados c++\main.cpp
+1474685929 source:c:\users\anderson.usuário\documents\github\projeto-bd\banco de dados c++\main.cpp
 	<iostream>
-	<fstream>
-	<stdlib.h>
-	<algorithm>
 	"tabelas.h"
 
-1474246768 c:\users\anderson.usuário\documents\github\projeto-bd\banco de dados c++\include\tabelas.h
+1474684694 c:\users\anderson.usuário\documents\github\projeto-bd\banco de dados c++\include\tabelas.h
+	<fstream>
+	<iostream>
+	<stdlib.h>
 	<string>
 	<vector>
 	<algorithm>
 
-1474247779 source:c:\users\anderson.usuário\documents\github\projeto-bd\banco de dados c++\src\tabelas.cpp
+1474686533 source:c:\users\anderson.usuário\documents\github\projeto-bd\banco de dados c++\src\tabelas.cpp
 	"tabelas.h"
-	<fstream>
-	<iostream>
-	<stdlib.h>
 

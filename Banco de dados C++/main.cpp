@@ -1,20 +1,12 @@
 #include <iostream>
-#include <fstream>
-#include <stdlib.h>
-#include <algorithm>
 #include "tabelas.h"
 using namespace std;
-
 
 
 int main()
 {
     int opcao;
-    Inf_arquivos informacoes;   //quando esse objeto é instanciado ele ler todos os arquivos
-                                //deixando tudo em memoria, assim não precisa ficar lendo e escrevendo direto nos arquivos
-
-    system("pause");    //espera o usuário digitar alguma coisa(no windows)
-    system("cls");      //limpa a tela(no windows)
+    Inf_arquivos informacoes;
 
     do{
         cout<<"1 - Cadastrar cliente "<<endl;
@@ -23,21 +15,36 @@ int main()
         cout<<"4 - Relatorio de um fornecimento "<<endl;
         cout<<"5 - Valor total do fornecimento "<<endl;
         cout<<"6 - Quais produtos foram entregues num determinado fornecimento "<<endl;
-        cout<<"7 - Quais clientes estão devendo "<<endl;
+        cout<<"7 - Quais clientes estao devendo "<<endl;
         cout<<"8 - Listar produtos "<<endl;
         cout<<"9 - Listar clientes "<<endl;
-        cout<<"10 - Sair"<<endl;
+        cout<<"10 - Excluir cliente "<<endl;
+        cout<<"11 - Excluir produto "<<endl;
+        cout<<"12 - Sair"<<endl;
         cout<<"->";
         cin>>opcao;
 
+        ///lembrar de retirar alguns atributos irelevantess
         switch(opcao){
-            case 1:{
+            case 1:{//OK
                 string nome;
                 string tipo;
                 unsigned int cod;
 
-                system("cls");  //limpando a tela(so no windows)
+                Cliente cli;
+
+                LIMPARTELA;
                 cout<<"--CADASTRAR CLIENTE--"<<endl<<endl;
+
+                cout<<"Codigo: ";
+                fflush(stdin);
+                cin >> cod;
+
+                if(!Cliente::valido(&informacoes, cod)){    //verificando a validade do codigo informado pelo usuario
+                    cout<<"Cliente ja cadastrado!!!"<<endl;
+                    PAUSE;
+                    break;
+                }
 
                 cout<<"Nome: ";
                 fflush(stdin);      //limpando o buffer pois se tiver algo la ele nao ira pegar o nome que o usuário digitou
@@ -47,22 +54,33 @@ int main()
                 fflush(stdin);
                 getline(cin, tipo);
 
-                cout<<"Codigo: ";
-                fflush(stdin);
-                cin >> cod;
 
-                Cliente cli(nome, tipo, cod);   //criando um objeto cliente com as informações digitadas acima
-                cli.salvar_no_arquivo(&informacoes);    //salvando no arquivo de cliente
+                cli.set_codigo(cod);
+                cli.set_nome(nome);
+                cli.set_tipo(tipo);
+
+                cli.salvar_no_arquivo();    //salvando no arquivo de cliente
                 break;
 
             }
-            case 2:{
+            case 2:{//OK
                 string nome;
                 double valor;
                 unsigned int cod;
 
-                system("cls");  //limpando a tela
+                Produto prod;
+
+                LIMPARTELA;
                 cout<<"--CADASTRAR PRODUTO--"<<endl<<endl;
+
+                cout<<"Codigo: ";
+                cin >> cod;
+
+                if(!Produto::valido(&informacoes, cod)){     //verificando a validade do codigo do produto informado
+                    cout<<"Produto ja cadastrado!!!"<<endl;
+                    PAUSE;
+                    break;
+                }
 
                 cout<<"Nome: ";
                 fflush(stdin);  //limpando o buffer
@@ -72,22 +90,32 @@ int main()
                 fflush(stdin);
                 cin >> valor;
 
-                cout<<"Codigo: ";
-                cin >> cod;
+                prod.set_codigo(cod);
+                prod.set_nome(nome);
+                prod.set_valor(valor);
 
-                Produto pro(nome, valor, cod);  //criando um objeto produto
-                pro.salvar_no_arquivo(&informacoes);    //armazenando no arquivo de produtos
+
+                prod.salvar_no_arquivo();    //armazenando no arquivo de produtos
 
                 break;
             }
-            case 3:{
+            case 3:{//OK
                 Fornecimento fornecimento;  //criando um objeto fornecimento
 
-                system("cls");  //limpando a tela(so no windows)
+                LIMPARTELA;
                 cout<<"--CADASTRAR FORNECIMENTO--"<<endl<<endl;
 
-                cout<<"Codigo da venda: ";
-                cin>>fornecimento.cod_venda;    //requisitando o codigo da venda
+                unsigned int cod_venda;
+                cout<<"Codigo do fornecimento: ";
+                cin>>cod_venda;
+
+                if(!Fornecimento::valido(informacoes, cod_venda)){  //verificando a validade do codigo do fornecimento informado
+                    cout<<"O codigo dessa venda ja esta cadastrada, tente novamente!!!"<<endl;
+                    PAUSE;
+                    break;
+                }
+
+                fornecimento.cod_venda = cod_venda;
 
                 bool conti;
                 while(true){
@@ -95,21 +123,14 @@ int main()
 
                     cout<<"Codigo do cliente: ";
                     cin>>cod_cliente;
-                    //cin>>fornecimento.cod_cliente;
 
                     Cliente cli;
-                    cli.set_codigo(cod_cliente);
-
-                    vector<Cliente>::iterator it_cli;
-                    it_cli = find(informacoes.clientes.begin(), informacoes.clientes.end(), cli);
-
-                    if(it_cli != informacoes.clientes.end()){
+                    if(Cliente::valido(&informacoes, cod_cliente)){
                         fornecimento.cod_cliente = cod_cliente;
-                        break;
                     }
                     else{
 
-                        cout<<"Codigo invalido!!!"<<endl<<"'1' para digitar outro codigo"<<endl<<"'0' para cancelar o cadastrar o fornecimento: "<<endl;
+                        cout<<"Codigo invalido!!!"<<endl<<"'1' para digitar outro codigo"<<endl<<"'0' para cancelar o cadastrar fornecimento: "<<endl;
                         cin>>conti;
 
                         if(!conti){
@@ -134,25 +155,19 @@ int main()
 
                 cout<<endl<<endl<<"--Produtos do fornecimento--"<<endl;
 
-                bool continuar = true;  //variavel que ficará responsavel pela parada do loop abaixo
+                bool continuar = true;              //variavel que ficará responsavel pela parada do loop abaixo
                 while(continuar){
                     Fornecimento::inf_produtos pro; //criando uma estrutura que terá as seguintes informações
                                                     //PRODUTO, QUANTIDADE, PRECO.
 
+
                     unsigned int cod_produto;
-
                     cout<<"Codigo do produto: ";
-                    cin>>cod_produto;   //esperando o codigo
+                    cin>>cod_produto;
 
-                    Produto temp;       //criando uma produto temporario
-                    temp.set_codigo(cod_produto);   //setando o codigo dele de acordo com o codigo informado pelo usuario acima
 
-                    //verificando se esse produto esta cadastrado no sistema
-                    vector<Produto>::iterator it = find(informacoes.produtos.begin(),informacoes.produtos.end(), temp);
-
-                    //se o produto informado acima estiver cadastrado
-                    //requisite as proximas informações
-                    if(it != informacoes.produtos.end()){
+                    if(!Produto::valido(&informacoes, cod_produto)){ //Se esse codigo nao for valido é pq ele ja esta cadastrado
+                                                                    //ou seja ele existe no estoque
 
                         cout<<"Quantidade de caixar enviadas: ";
                         cin>>pro.qtd;
@@ -181,72 +196,106 @@ int main()
                 //ha sentido num fornecimento sem produtos
                 if(fornecimento.produtos.size() == 0){
                     cout<<"Operacao de fornecimento nao concluida,(alguns dados podem estar faltando)!!"<<endl;
-                    system("pause");
+                    PAUSE;
                 }
                 else{
-                    fornecimento.salvar_no_arquivo(&informacoes); //salvando esse fornecimento no arquivo
+                    fornecimento.salvar_no_arquivo(); //salvando esse fornecimento no arquivo
                 }
 
 
                 break;
             }
-            case 4:{
+            case 4:{//OK
                 unsigned int cod_venda;
-                cout<<"Digite o codigo da venda: "<<endl;
+
+                LIMPARTELA;
+                cout<<"--RELATORIO DO FORNECIMENTO--"<<endl<<endl;
+
+                cout<<"Digite o codigo do fornecimento: "<<endl;
                 cin>>cod_venda;
 
                 informacoes.relatorio_de_venda(cod_venda);
 
                 break;
             }
-            case 5:{
+            case 5:{//OK
                 unsigned int cod_venda;
 
-                system("cls");  //limpando a tela(so no windows)
+                LIMPARTELA;
                 cout<<"--VALOR DE UM FORNECIMENTO--"<<endl<<endl;
 
-                cout<<"Digite o codigo da venda: ";
+                cout<<"Digite o codigo do fornecimento: ";
                 cin>>cod_venda;
 
                 informacoes.valor_total_fornecimento(cod_venda);
                 break;
             }
-            case 6:{
-                system("cls");  //limpando a tela(so no windows)
+            case 6:{//OK
+                LIMPARTELA;
                 cout<<"--LISTA DE PRODUTOS DE UM FORNECIMENTO--"<<endl<<endl;
 
                 unsigned int cod_venda;
-                cout<<"Codigo da venda: ";
+                cout<<"Codigo do fornecimento: ";
                 cin>>cod_venda;
 
                 informacoes.listar_prod_venda(cod_venda);
 
                 break;
             }
-            case 7:{
-                system("cls");  //limpando a tela(so no windows)
+            case 7:{//OK
+                LIMPARTELA;
                 cout<<"--LISTA CLIENTES DEVEDORES--"<<endl<<endl;
 
                 informacoes.listar_devedores();
 
                 break;
             }
-            case 8:{
-                system("cls");  //limpando a tela(so no windows)
+            case 8:{//OK
+                LIMPARTELA;
                 cout<<"--LISTA DE PRODUTOS--"<<endl<<endl;
 
                 informacoes.listar_produtos();
 
+                PAUSE;
                 break;
             }
-            case 9:{
-                system("cls");  //limpando a tela(so no windows)
+            case 9:{//OK
+                LIMPARTELA;
                 cout<<"--LISTA DE CLIENTES--"<<endl<<endl;
                 informacoes.listar_clientes();
 
+                PAUSE;
                 break;
             }
-            case 10:{
+            case 10:{//OK
+                LIMPARTELA;
+                cout<<"--EXCLUIR CLIENTE--"<<endl<<endl;
+                informacoes.listar_clientes();
+                cout<<endl<<endl;
+                unsigned int cod;
+                cout<<"Digite o codigo do cliente: ";
+                cin>>cod;
+
+                informacoes.excluir_cliente(cod);
+
+                break;
+            }
+            case 11:{//OK
+                LIMPARTELA;
+                cout<<"--EXCLUIR PRODUTO--"<<endl<<endl;
+
+                informacoes.listar_produtos();
+                cout<<endl<<endl;
+
+                unsigned int cod;
+                cout<<"Digite o codigo do produto: ";
+                cin>>cod;
+
+                informacoes.excluir_produto(cod);
+
+                break;
+            }
+            case 12:{//OK
                 break;
             }
             default:{
@@ -256,8 +305,8 @@ int main()
             }
         }
 
-        system("cls");
-    }while(opcao != 10);
+        LIMPARTELA;
+    }while(opcao != 12);
 
     cout << "Bye world!" << endl;
     return 0;

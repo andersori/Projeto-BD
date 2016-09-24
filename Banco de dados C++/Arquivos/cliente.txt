@@ -7,12 +7,6 @@ hipermercado
 araujo
 topmercado
 318
-kaio
-flash
-109
 george
 supermercado
 1873
-jose
-hipermercado
-319

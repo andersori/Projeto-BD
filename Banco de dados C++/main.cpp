@@ -300,7 +300,7 @@ int main()
             }
             default:{
                 cout<<"Operacao invalida!!!"<<endl;
-                system("pause");
+                PAUSE;
                 break;
             }
         }

@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/resources">
         <file>imgs/users.png</file>
+        <file>imgs/search_user.png</file>
     </qresource>
 </RCC>

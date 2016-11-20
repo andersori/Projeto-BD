@@ -17,6 +17,11 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+private slots:
+    void paginaUsuarios();
+    void paginaPublicacoes();
+    void paginaEmprestimos();
 };
 
 #endif // MAINWINDOW_H

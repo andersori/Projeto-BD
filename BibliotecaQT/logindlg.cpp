@@ -34,6 +34,16 @@ LoginDLG::~LoginDLG()
     delete ui;
 }
 
+bool LoginDLG::getLogado() const
+{
+    return logado;
+}
+
+void LoginDLG::setLogado(bool value)
+{
+    logado = value;
+}
+
 //Slot login, ele será executado quando o botão de login for precionado
 void LoginDLG::login()
 {
@@ -59,6 +69,8 @@ void LoginDLG::login()
         //Se encontrou, então o usuário esta logado
         QString nome = query.value(0).toString();
         qDebug() << tr("Usuário: ") + nome;
+        setLogado(true);
+        close();
     }
 
     query.clear();

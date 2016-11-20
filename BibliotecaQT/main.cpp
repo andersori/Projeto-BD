@@ -12,7 +12,13 @@ int main(int argc, char *argv[])
 
     //Abrindo a janela de login
     LoginDLG login;
-    login.show();
+    login.exec();
+
+    if(login.getLogado())
+    {
+        MainWindow *m = new MainWindow();
+        m->show();
+    }
 
     return a.exec();
 }

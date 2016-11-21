@@ -16,10 +16,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->usuariosCadastradosBTN->setIcon(ico);
     ui->usuariosCadastradosBTN->setIconSize(pix.rect().size());
 
-
-
-
-
     connect(ui->usuariosCadastradosBTN, SIGNAL(clicked()), this, SLOT(paginaUsuarios()));
     connect(ui->emprestimosBTN, SIGNAL(clicked()), this, SLOT(paginaEmprestimos()));
     connect(ui->publicacoesBTN, SIGNAL(clicked()), this, SLOT(paginaPublicacoes()));

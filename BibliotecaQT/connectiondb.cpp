@@ -12,7 +12,7 @@ ConnectionDB::ConnectionDB()
 {
     //Setando os atributos de acesso ao banco
     _bd.setHostName("localhost");
-    _bd.setDatabaseName("biblioteca");
+    _bd.setDatabaseName("biblioteca_qt");
     _bd.setUserName("funcionario");
     _bd.setPassword("senhafunc");
 

@@ -39,7 +39,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>Publicações</string>
+         <string/>
         </property>
        </widget>
       </item>
@@ -52,7 +52,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>Empréstimos</string>
+         <string/>
         </property>
        </widget>
       </item>

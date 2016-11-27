@@ -424,8 +424,8 @@ public:
         actionAlunoEmp->setText(QApplication::translate("MainWindow", "Aluno", 0));
         actionProfessorEmp->setText(QApplication::translate("MainWindow", "Professor", 0));
         usuariosCadastradosBTN->setText(QString());
-        publicacoesBTN->setText(QApplication::translate("MainWindow", "Publica\303\247\303\265es", 0));
-        emprestimosBTN->setText(QApplication::translate("MainWindow", "Empr\303\251stimos", 0));
+        publicacoesBTN->setText(QString());
+        emprestimosBTN->setText(QString());
         label->setText(QApplication::translate("MainWindow", "Pagina de Usu\303\241rios", 0));
         buscarPorLB->setText(QApplication::translate("MainWindow", "Buscar por", 0));
         tipoDeBuscaCB->clear();

@@ -19,6 +19,9 @@ private:
     Ui::MainWindow *ui;
 
 private slots:
+    void janelaCadastrarAluno();
+
+
     void paginaUsuarios();
     void paginaPublicacoes();
     void paginaEmprestimos();

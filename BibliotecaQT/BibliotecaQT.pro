@@ -15,14 +15,17 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     logindlg.cpp \
-    connectiondb.cpp
+    connectiondb.cpp \
+    cadastroalunodlg.cpp
 
 HEADERS  += mainwindow.h \
     logindlg.h \
-    connectiondb.h
+    connectiondb.h \
+    cadastroalunodlg.h
 
 FORMS    += mainwindow.ui \
-    logindlg.ui
+    logindlg.ui \
+    cadastroalunodlg.ui
 
 RESOURCES += \
     resources.qrc

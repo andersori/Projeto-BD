@@ -27,9 +27,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->emprestimosBTN->setIcon(ico3);
     ui->emprestimosBTN->setIconSize(loan_document.rect().size());
 
-    connect(ui->actionAlunoCad, SIGNAL(triggered()), this, SLOT(janelaCadastrarAluno()));
-    connect(ui->usuariosCadastradosBTN, SIGNAL(clicked()), this, SLOT(paginaUsuarios()));
-    connect(ui->emprestimosBTN, SIGNAL(clicked()), this, SLOT(paginaEmprestimos()));
+    connect(ui->actionAlunoCad, SIGNAL(triggered()), this, SLOT(janelaCadastrarAluno()));//COMANDO PARA ABRIR OUTRA JANELA - TIPO REFERENCIAR OUTRA JANELA
+    connect(ui->usuariosCadastradosBTN, SIGNAL(clicked()), this, SLOT(paginaUsuarios()));//usuariosCadastradosBTN É UM BOTAO QUANDO APERTADO VAI ABRIR A PAGINA paginaUsuarios
+    connect(ui->emprestimosBTN, SIGNAL(clicked()), this, SLOT(paginaEmprestimos()));//SIGNAL É APOREÇÃO FEITA COM O SLOT QUE É APGINA
     connect(ui->publicacoesBTN, SIGNAL(clicked()), this, SLOT(paginaPublicacoes()));
 }
 
@@ -38,8 +38,8 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::paginaUsuarios(){
-    ui->paginas->setCurrentIndex(1);
+void MainWindow::paginaUsuarios(){//OQUE FAZER COM AS APERAÇÕES DE CIMA
+    ui->paginas->setCurrentIndex(1);//1 SERIA A TRANSIÇÃO DA PAGINA, QUAL PAGINA ELA VAI
 }
 
 void MainWindow::paginaPublicacoes(){

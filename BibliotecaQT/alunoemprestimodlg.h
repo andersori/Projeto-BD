@@ -2,6 +2,7 @@
 #define ALUNOEMPRESTIMODLG_H
 
 #include <QDialog>
+#include "connectiondb.h"
 
 namespace Ui {
 class AlunoEmprestimoDLG;
@@ -17,6 +18,7 @@ public:
 
 private:
     Ui::AlunoEmprestimoDLG *ui;
+    ConnectionDB* con;
 };
 
 #endif // ALUNOEMPRESTIMODLG_H

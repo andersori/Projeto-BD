@@ -17,6 +17,7 @@ public:
 
 private:
     Ui::ProfessorEmprestimoDLG *ui;
+
 };
 
 #endif // PROFESSOREMPRESTIMODLG_H

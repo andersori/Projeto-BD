@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 
 #include "cadastroalunodlg.h"
+#include "alunoemprestimodlg.h"
+#include "professoremprestimodlg.h"
 
 #include <QPixmap>
 #include <QIcon>
@@ -31,6 +33,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->usuariosCadastradosBTN, SIGNAL(clicked()), this, SLOT(paginaUsuarios()));//usuariosCadastradosBTN É UM BOTAO QUANDO APERTADO VAI ABRIR A PAGINA paginaUsuarios
     connect(ui->emprestimosBTN, SIGNAL(clicked()), this, SLOT(paginaEmprestimos()));//SIGNAL É APOREÇÃO FEITA COM O SLOT QUE É APGINA
     connect(ui->publicacoesBTN, SIGNAL(clicked()), this, SLOT(paginaPublicacoes()));
+    connect(ui->actionAlunoEmp,SIGNAL(triggered()),this,SLOT(janelaEmprestimoAluno()));
+    connect(ui->actionProfessorEmp,SIGNAL(triggered()),this,SLOT(janelaEmprestimoProf()));
 }
 
 MainWindow::~MainWindow()
@@ -54,6 +58,15 @@ void MainWindow::janelaCadastrarAluno(){
     CadastroAlunoDLG* janela = new CadastroAlunoDLG();
     janela->exec();
 }
+void MainWindow::janelaEmprestimoAluno(){
+    AlunoEmprestimoDLG* janela=new AlunoEmprestimoDLG();
+    janela->exec();
+}
+void MainWindow::janelaEmprestimoProf(){
+    ProfessorEmprestimoDLG* janela=new ProfessorEmprestimoDLG();
+    janela->exec();
+}
+
 
 
 

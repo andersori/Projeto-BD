@@ -20,11 +20,14 @@ private:
 
 private slots:
     void janelaCadastrarAluno();
+    void janelaEmprestimoAluno();
+    void janelaEmprestimoProf();
 
 
     void paginaUsuarios();
     void paginaPublicacoes();
     void paginaEmprestimos();
+
 };
 
 #endif // MAINWINDOW_H

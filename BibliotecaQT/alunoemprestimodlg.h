@@ -19,6 +19,8 @@ public:
 private:
     Ui::AlunoEmprestimoDLG *ui;
     ConnectionDB* con;
+
+    void buscarLivro();
 };
 
 #endif // ALUNOEMPRESTIMODLG_H

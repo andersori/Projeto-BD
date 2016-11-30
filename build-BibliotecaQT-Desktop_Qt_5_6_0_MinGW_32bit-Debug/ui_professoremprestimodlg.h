@@ -18,6 +18,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QTableView>
 
 QT_BEGIN_NAMESPACE
 
@@ -28,14 +29,14 @@ public:
     QLabel *label;
     QLabel *label_2;
     QLineEdit *lineEdit_2;
-    QLineEdit *lineEdit_3;
     QLabel *label_3;
-    QLineEdit *lineEdit_4;
     QLabel *label_4;
-    QPushButton *pushButton;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton_3;
-    QPushButton *pushButton_4;
+    QPushButton *empButtonProf1;
+    QPushButton *empButtonProf2;
+    QPushButton *efetuarEmprestimoButton_3;
+    QPushButton *ButtonCancelarEmpP;
+    QTableView *tituloLivroPr;
+    QTableView *nomeProf;
 
     void setupUi(QDialog *ProfessorEmprestimoDLG)
     {
@@ -53,31 +54,34 @@ public:
         label_2->setGeometry(QRect(10, 130, 121, 16));
         lineEdit_2 = new QLineEdit(ProfessorEmprestimoDLG);
         lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
+        lineEdit_2->setEnabled(false);
         lineEdit_2->setGeometry(QRect(10, 150, 151, 20));
-        lineEdit_3 = new QLineEdit(ProfessorEmprestimoDLG);
-        lineEdit_3->setObjectName(QStringLiteral("lineEdit_3"));
-        lineEdit_3->setGeometry(QRect(190, 70, 191, 20));
         label_3 = new QLabel(ProfessorEmprestimoDLG);
         label_3->setObjectName(QStringLiteral("label_3"));
         label_3->setGeometry(QRect(190, 50, 71, 16));
-        lineEdit_4 = new QLineEdit(ProfessorEmprestimoDLG);
-        lineEdit_4->setObjectName(QStringLiteral("lineEdit_4"));
-        lineEdit_4->setGeometry(QRect(190, 150, 191, 20));
         label_4 = new QLabel(ProfessorEmprestimoDLG);
         label_4->setObjectName(QStringLiteral("label_4"));
         label_4->setGeometry(QRect(190, 130, 91, 16));
-        pushButton = new QPushButton(ProfessorEmprestimoDLG);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(10, 100, 75, 23));
-        pushButton_2 = new QPushButton(ProfessorEmprestimoDLG);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setGeometry(QRect(10, 180, 75, 23));
-        pushButton_3 = new QPushButton(ProfessorEmprestimoDLG);
-        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
-        pushButton_3->setGeometry(QRect(90, 270, 111, 23));
-        pushButton_4 = new QPushButton(ProfessorEmprestimoDLG);
-        pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
-        pushButton_4->setGeometry(QRect(210, 270, 75, 23));
+        empButtonProf1 = new QPushButton(ProfessorEmprestimoDLG);
+        empButtonProf1->setObjectName(QStringLiteral("empButtonProf1"));
+        empButtonProf1->setGeometry(QRect(10, 100, 75, 23));
+        empButtonProf2 = new QPushButton(ProfessorEmprestimoDLG);
+        empButtonProf2->setObjectName(QStringLiteral("empButtonProf2"));
+        empButtonProf2->setGeometry(QRect(10, 180, 75, 23));
+        efetuarEmprestimoButton_3 = new QPushButton(ProfessorEmprestimoDLG);
+        efetuarEmprestimoButton_3->setObjectName(QStringLiteral("efetuarEmprestimoButton_3"));
+        efetuarEmprestimoButton_3->setGeometry(QRect(90, 270, 111, 23));
+        ButtonCancelarEmpP = new QPushButton(ProfessorEmprestimoDLG);
+        ButtonCancelarEmpP->setObjectName(QStringLiteral("ButtonCancelarEmpP"));
+        ButtonCancelarEmpP->setGeometry(QRect(210, 270, 75, 23));
+        tituloLivroPr = new QTableView(ProfessorEmprestimoDLG);
+        tituloLivroPr->setObjectName(QStringLiteral("tituloLivroPr"));
+        tituloLivroPr->setEnabled(false);
+        tituloLivroPr->setGeometry(QRect(190, 70, 191, 20));
+        nomeProf = new QTableView(ProfessorEmprestimoDLG);
+        nomeProf->setObjectName(QStringLiteral("nomeProf"));
+        nomeProf->setEnabled(false);
+        nomeProf->setGeometry(QRect(190, 150, 191, 20));
 
         retranslateUi(ProfessorEmprestimoDLG);
 
@@ -91,10 +95,10 @@ public:
         label_2->setText(QApplication::translate("ProfessorEmprestimoDLG", "Matr\303\255cula do professor", 0));
         label_3->setText(QApplication::translate("ProfessorEmprestimoDLG", "T\303\255tulo do Livro", 0));
         label_4->setText(QApplication::translate("ProfessorEmprestimoDLG", "Nome do professor", 0));
-        pushButton->setText(QApplication::translate("ProfessorEmprestimoDLG", "Buscar", 0));
-        pushButton_2->setText(QApplication::translate("ProfessorEmprestimoDLG", "Buscar", 0));
-        pushButton_3->setText(QApplication::translate("ProfessorEmprestimoDLG", "Efetuar empr\303\251stimo", 0));
-        pushButton_4->setText(QApplication::translate("ProfessorEmprestimoDLG", "Cancelar", 0));
+        empButtonProf1->setText(QApplication::translate("ProfessorEmprestimoDLG", "Buscar", 0));
+        empButtonProf2->setText(QApplication::translate("ProfessorEmprestimoDLG", "Buscar", 0));
+        efetuarEmprestimoButton_3->setText(QApplication::translate("ProfessorEmprestimoDLG", "Efetuar empr\303\251stimo", 0));
+        ButtonCancelarEmpP->setText(QApplication::translate("ProfessorEmprestimoDLG", "Cancelar", 0));
     } // retranslateUi
 
 };

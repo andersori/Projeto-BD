@@ -50,21 +50,14 @@
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_2">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>150</y>
      <width>151</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_3">
-   <property name="geometry">
-    <rect>
-     <x>190</x>
-     <y>70</y>
-     <width>191</width>
      <height>20</height>
     </rect>
    </property>
@@ -82,16 +75,6 @@
     <string>Título do Livro</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_4">
-   <property name="geometry">
-    <rect>
-     <x>190</x>
-     <y>150</y>
-     <width>191</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
@@ -105,7 +88,7 @@
     <string>Nome do professor</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="empButtonProf1">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -118,7 +101,7 @@
     <string>Buscar</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="empButtonProf2">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -131,7 +114,7 @@
     <string>Buscar</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="efetuarEmprestimoButton_3">
    <property name="geometry">
     <rect>
      <x>90</x>
@@ -144,7 +127,7 @@
     <string>Efetuar empréstimo</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_4">
+  <widget class="QPushButton" name="ButtonCancelarEmpP">
    <property name="geometry">
     <rect>
      <x>210</x>
@@ -155,6 +138,32 @@
    </property>
    <property name="text">
     <string>Cancelar</string>
+   </property>
+  </widget>
+  <widget class="QTableView" name="tituloLivroPr">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>70</y>
+     <width>191</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QTableView" name="nomeProf">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>150</y>
+     <width>191</width>
+     <height>20</height>
+    </rect>
    </property>
   </widget>
  </widget>

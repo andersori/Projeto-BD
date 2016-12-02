@@ -29,6 +29,8 @@ private slots:
     void paginaPublicacoes();
     void paginaEmprestimos();
 
+    void buscarUsuarios();
+
 };
 
 #endif // MAINWINDOW_H

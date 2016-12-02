@@ -8,6 +8,9 @@
 
 #include <QPixmap>
 #include <QIcon>
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QSqlQueryModel>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -34,6 +37,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->usuariosCadastradosBTN, SIGNAL(clicked()), this, SLOT(paginaUsuarios()));//usuariosCadastradosBTN É UM BOTAO QUANDO APERTADO VAI ABRIR A PAGINA paginaUsuarios
     connect(ui->emprestimosBTN, SIGNAL(clicked()), this, SLOT(paginaEmprestimos()));//SIGNAL É APOREÇÃO FEITA COM O SLOT QUE É APGINA
     connect(ui->publicacoesBTN, SIGNAL(clicked()), this, SLOT(paginaPublicacoes()));
+    connect(ui->buscarBTN, SIGNAL(clicked()), this, SLOT(buscarUsuarios()));
     connect(ui->actionAlunoEmp,SIGNAL(triggered()),this,SLOT(janelaEmprestimoAluno()));
     connect(ui->actionProfessorEmp,SIGNAL(triggered()),this,SLOT(janelaEmprestimoProf()));
     connect(ui->menuSobre, SIGNAL(clicked()), this, SLOT(janelaAjuda());
@@ -68,9 +72,26 @@ void MainWindow::janelaEmprestimoProf(){
     ProfessorEmprestimoDLG* janela=new ProfessorEmprestimoDLG();
     janela->exec();
 }
+<<<<<<< HEAD
 void MainWindow::janelaAjuda(){
     ajudaDlg* janela = new ajudaDlg();
     janela->exec();
+=======
+void MainWindow::buscarUsuarios(){
+    QSqlDatabase bd = ConnectionDB::get_bd();
+
+    QSqlQueryModel* model = new QSqlQueryModel();
+
+    QSqlQuery* qry = new QSqlQuery(bd);
+
+    qry->prepare("SELECT * FROM usuario");
+
+    qry->exec();
+
+    model->setQuery(*qry);
+
+    ui->usuarioTable->setModel(model);
+>>>>>>> origin/master
 }
 
 

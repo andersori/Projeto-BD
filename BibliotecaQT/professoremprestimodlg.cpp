@@ -6,6 +6,7 @@ ProfessorEmprestimoDLG::ProfessorEmprestimoDLG(QWidget *parent) :
     ui(new Ui::ProfessorEmprestimoDLG)
 {
     ui->setupUi(this);
+    connect(ui->ButtonCancelarEmpP, SIGNAL(clicked()), this, SLOT(close()));
 }
 
 ProfessorEmprestimoDLG::~ProfessorEmprestimoDLG()

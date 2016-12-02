@@ -157,6 +157,7 @@ public:
 
         paginas = new QStackedWidget(centralWidget);
         paginas->setObjectName(QStringLiteral("paginas"));
+        paginas->setEnabled(true);
         inicialPG = new QWidget();
         inicialPG->setObjectName(QStringLiteral("inicialPG"));
         paginas->addWidget(inicialPG);

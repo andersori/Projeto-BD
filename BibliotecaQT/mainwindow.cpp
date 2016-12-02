@@ -4,6 +4,7 @@
 #include "cadastroalunodlg.h"
 #include "alunoemprestimodlg.h"
 #include "professoremprestimodlg.h"
+#include "ajudadlg.h"
 
 #include <QPixmap>
 #include <QIcon>
@@ -35,6 +36,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->publicacoesBTN, SIGNAL(clicked()), this, SLOT(paginaPublicacoes()));
     connect(ui->actionAlunoEmp,SIGNAL(triggered()),this,SLOT(janelaEmprestimoAluno()));
     connect(ui->actionProfessorEmp,SIGNAL(triggered()),this,SLOT(janelaEmprestimoProf()));
+    connect(ui->menuSobre, SIGNAL(clicked()), this, SLOT(janelaAjuda());
 }
 
 MainWindow::~MainWindow()
@@ -64,6 +66,10 @@ void MainWindow::janelaEmprestimoAluno(){
 }
 void MainWindow::janelaEmprestimoProf(){
     ProfessorEmprestimoDLG* janela=new ProfessorEmprestimoDLG();
+    janela->exec();
+}
+void MainWindow::janelaAjuda(){
+    ajudaDlg* janela = new ajudaDlg();
     janela->exec();
 }
 

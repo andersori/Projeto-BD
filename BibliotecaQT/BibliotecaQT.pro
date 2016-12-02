@@ -18,20 +18,23 @@ SOURCES += main.cpp\
     connectiondb.cpp \
     cadastroalunodlg.cpp \
     alunoemprestimodlg.cpp \
-    professoremprestimodlg.cpp
+    professoremprestimodlg.cpp \
+    ajudadlg.cpp
 
 HEADERS  += mainwindow.h \
     logindlg.h \
     connectiondb.h \
     cadastroalunodlg.h \
     alunoemprestimodlg.h \
-    professoremprestimodlg.h
+    professoremprestimodlg.h \
+    ajudadlg.h
 
 FORMS    += mainwindow.ui \
     logindlg.ui \
     cadastroalunodlg.ui \
     alunoemprestimodlg.ui \
-    professoremprestimodlg.ui
+    professoremprestimodlg.ui \
+    ajudadlg.ui
 
 RESOURCES += \
     resources.qrc

@@ -22,11 +22,14 @@ private slots:
     void janelaCadastrarAluno();
     void janelaEmprestimoAluno();
     void janelaEmprestimoProf();
+    void janelaAjuda();
 
 
     void paginaUsuarios();
     void paginaPublicacoes();
     void paginaEmprestimos();
+
+    void buscarUsuarios();
 
 };
 

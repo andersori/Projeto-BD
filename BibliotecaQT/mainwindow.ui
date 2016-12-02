@@ -61,7 +61,7 @@
     <item>
      <widget class="QStackedWidget" name="paginas">
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="inicialPG"/>
       <widget class="QWidget" name="usuariosPG">
@@ -88,7 +88,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="tipoDeBuscaCB">
+             <widget class="QComboBox" name="tipoDeBuscaUsuarioCB">
               <item>
                <property name="text">
                 <string>Matricicula</string>
@@ -111,10 +111,10 @@
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_3">
             <item>
-             <widget class="QLineEdit" name="pesquisaLE"/>
+             <widget class="QLineEdit" name="pesquisaUsuarioLE"/>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton">
+             <widget class="QPushButton" name="buscarBTN">
               <property name="text">
                <string>Buscar</string>
               </property>
@@ -125,7 +125,7 @@
          </layout>
         </item>
         <item>
-         <widget class="QTableView" name="tableView"/>
+         <widget class="QTableView" name="usuarioTable"/>
         </item>
        </layout>
       </widget>
@@ -151,7 +151,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="comboBox">
+           <widget class="QComboBox" name="tipoDeBuscaPublicacaoCB">
             <item>
              <property name="text">
               <string>Título</string>
@@ -174,28 +174,28 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_4">
           <item>
-           <widget class="QCheckBox" name="checkBox_3">
+           <widget class="QCheckBox" name="publicacaoLivroCheck">
             <property name="text">
              <string>Livro</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QCheckBox" name="checkBox">
+           <widget class="QCheckBox" name="publicacaoRevistaCheck">
             <property name="text">
              <string>Revista</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QCheckBox" name="checkBox_4">
+           <widget class="QCheckBox" name="publicacaoPeriodicosCheck">
             <property name="text">
              <string>Periódicos</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QCheckBox" name="checkBox_2">
+           <widget class="QCheckBox" name="publicacaoArtigoCheck">
             <property name="text">
              <string>Artigo</string>
             </property>
@@ -206,10 +206,10 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_6">
           <item>
-           <widget class="QLineEdit" name="lineEdit"/>
+           <widget class="QLineEdit" name="pesquisaPublicacaoLE"/>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_2">
+           <widget class="QPushButton" name="buscarPublicacoesBTN">
             <property name="text">
              <string>Buscar</string>
             </property>
@@ -218,7 +218,7 @@
          </layout>
         </item>
         <item>
-         <widget class="QTableView" name="tableView_2"/>
+         <widget class="QTableView" name="publicacoesTable"/>
         </item>
        </layout>
       </widget>
@@ -244,7 +244,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="comboBox_2">
+           <widget class="QComboBox" name="tipoDeBuscaEmprestimoCB">
             <item>
              <property name="text">
               <string>Nome do usuário</string>
@@ -282,14 +282,14 @@
            </spacer>
           </item>
           <item>
-           <widget class="QCheckBox" name="checkBox_5">
+           <widget class="QCheckBox" name="definirDataEmprestimoCheck">
             <property name="text">
              <string/>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QDateEdit" name="dateEdit">
+           <widget class="QDateEdit" name="dataEmprestimo">
             <property name="calendarPopup">
              <bool>true</bool>
             </property>
@@ -307,10 +307,10 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_9">
           <item>
-           <widget class="QLineEdit" name="lineEdit_2"/>
+           <widget class="QLineEdit" name="pesquisaEmprestimoLE"/>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_3">
+           <widget class="QPushButton" name="buscarEmprestimosBTN">
             <property name="text">
              <string>Buscar</string>
             </property>
@@ -319,7 +319,7 @@
          </layout>
         </item>
         <item>
-         <widget class="QTableView" name="tableView_3"/>
+         <widget class="QTableView" name="emprestimoBTN"/>
         </item>
        </layout>
       </widget>

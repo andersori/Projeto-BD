@@ -61,8 +61,8 @@ public:
     QComboBox *tipoDeBuscaCB;
     QHBoxLayout *horizontalLayout_3;
     QLineEdit *pesquisaLE;
-    QPushButton *pushButton;
-    QTableView *tableView;
+    QPushButton *buscarBTN;
+    QTableView *usuarioTable;
     QWidget *publicacoesPG;
     QVBoxLayout *verticalLayout_4;
     QLabel *label_2;
@@ -199,10 +199,10 @@ public:
 
         horizontalLayout_3->addWidget(pesquisaLE);
 
-        pushButton = new QPushButton(usuariosPG);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
+        buscarBTN = new QPushButton(usuariosPG);
+        buscarBTN->setObjectName(QStringLiteral("buscarBTN"));
 
-        horizontalLayout_3->addWidget(pushButton);
+        horizontalLayout_3->addWidget(buscarBTN);
 
 
         verticalLayout_2->addLayout(horizontalLayout_3);
@@ -210,10 +210,10 @@ public:
 
         verticalLayout_3->addLayout(verticalLayout_2);
 
-        tableView = new QTableView(usuariosPG);
-        tableView->setObjectName(QStringLiteral("tableView"));
+        usuarioTable = new QTableView(usuariosPG);
+        usuarioTable->setObjectName(QStringLiteral("usuarioTable"));
 
-        verticalLayout_3->addWidget(tableView);
+        verticalLayout_3->addWidget(usuarioTable);
 
         paginas->addWidget(usuariosPG);
         publicacoesPG = new QWidget();
@@ -408,7 +408,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        paginas->setCurrentIndex(0);
+        paginas->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -434,7 +434,7 @@ public:
          << QApplication::translate("MainWindow", "Nome", 0)
          << QApplication::translate("MainWindow", "E-mail", 0)
         );
-        pushButton->setText(QApplication::translate("MainWindow", "Buscar", 0));
+        buscarBTN->setText(QApplication::translate("MainWindow", "Buscar", 0));
         label_2->setText(QApplication::translate("MainWindow", "Pagina de publia\303\247\303\265es", 0));
         label_5->setText(QApplication::translate("MainWindow", "Bucar por", 0));
         comboBox->clear();

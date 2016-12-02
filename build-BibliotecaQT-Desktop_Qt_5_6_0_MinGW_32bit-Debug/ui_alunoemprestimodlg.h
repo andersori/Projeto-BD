@@ -31,12 +31,12 @@ public:
     QLabel *label_2;
     QLabel *label_3;
     QLabel *label_4;
-    QPushButton *buscButtonAl;
+    QPushButton *BotaoBuscarAl;
     QPushButton *buscButton_2Al;
     QPushButton *pushButton_3;
     QPushButton *CanButtonEmAl;
-    QTableView *tituloLivroAl;
     QTableView *nomeAluno;
+    QTableView *tituloLivroAl;
 
     void setupUi(QDialog *AlunoEmprestimoDLG)
     {
@@ -62,9 +62,9 @@ public:
         label_4 = new QLabel(AlunoEmprestimoDLG);
         label_4->setObjectName(QStringLiteral("label_4"));
         label_4->setGeometry(QRect(190, 40, 71, 16));
-        buscButtonAl = new QPushButton(AlunoEmprestimoDLG);
-        buscButtonAl->setObjectName(QStringLiteral("buscButtonAl"));
-        buscButtonAl->setGeometry(QRect(20, 90, 75, 23));
+        BotaoBuscarAl = new QPushButton(AlunoEmprestimoDLG);
+        BotaoBuscarAl->setObjectName(QStringLiteral("BotaoBuscarAl"));
+        BotaoBuscarAl->setGeometry(QRect(20, 90, 75, 23));
         buscButton_2Al = new QPushButton(AlunoEmprestimoDLG);
         buscButton_2Al->setObjectName(QStringLiteral("buscButton_2Al"));
         buscButton_2Al->setEnabled(false);
@@ -75,14 +75,14 @@ public:
         CanButtonEmAl = new QPushButton(AlunoEmprestimoDLG);
         CanButtonEmAl->setObjectName(QStringLiteral("CanButtonEmAl"));
         CanButtonEmAl->setGeometry(QRect(210, 270, 75, 23));
-        tituloLivroAl = new QTableView(AlunoEmprestimoDLG);
-        tituloLivroAl->setObjectName(QStringLiteral("tituloLivroAl"));
-        tituloLivroAl->setEnabled(false);
-        tituloLivroAl->setGeometry(QRect(190, 60, 181, 20));
         nomeAluno = new QTableView(AlunoEmprestimoDLG);
         nomeAluno->setObjectName(QStringLiteral("nomeAluno"));
         nomeAluno->setEnabled(false);
         nomeAluno->setGeometry(QRect(190, 140, 181, 20));
+        tituloLivroAl = new QTableView(AlunoEmprestimoDLG);
+        tituloLivroAl->setObjectName(QStringLiteral("tituloLivroAl"));
+        tituloLivroAl->setEnabled(false);
+        tituloLivroAl->setGeometry(QRect(190, 60, 181, 20));
 
         retranslateUi(AlunoEmprestimoDLG);
 
@@ -96,7 +96,7 @@ public:
         label_2->setText(QApplication::translate("AlunoEmprestimoDLG", "Matr\303\255cula do aluno", 0));
         label_3->setText(QApplication::translate("AlunoEmprestimoDLG", "Nome do aluno", 0));
         label_4->setText(QApplication::translate("AlunoEmprestimoDLG", "T\303\255tulo do livro", 0));
-        buscButtonAl->setText(QApplication::translate("AlunoEmprestimoDLG", "Buscar", 0));
+        BotaoBuscarAl->setText(QApplication::translate("AlunoEmprestimoDLG", "Buscar", 0));
         buscButton_2Al->setText(QApplication::translate("AlunoEmprestimoDLG", "Buscar", 0));
         pushButton_3->setText(QApplication::translate("AlunoEmprestimoDLG", "Efetuar empr\303\251stimo", 0));
         CanButtonEmAl->setText(QApplication::translate("AlunoEmprestimoDLG", "Cancelar", 0));

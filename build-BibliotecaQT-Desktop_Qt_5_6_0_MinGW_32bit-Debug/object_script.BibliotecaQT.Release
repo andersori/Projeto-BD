@@ -6,10 +6,12 @@ INPUT(
 ./release/cadastroalunodlg.o
 ./release/alunoemprestimodlg.o
 ./release/professoremprestimodlg.o
+./release/ajudadlg.o
 ./release/qrc_resources.o
 ./release/moc_mainwindow.o
 ./release/moc_logindlg.o
 ./release/moc_cadastroalunodlg.o
 ./release/moc_alunoemprestimodlg.o
 ./release/moc_professoremprestimodlg.o
+./release/moc_ajudadlg.o
 );

@@ -6,10 +6,12 @@ INPUT(
 ./debug/cadastroalunodlg.o
 ./debug/alunoemprestimodlg.o
 ./debug/professoremprestimodlg.o
+./debug/ajudadlg.o
 ./debug/qrc_resources.o
 ./debug/moc_mainwindow.o
 ./debug/moc_logindlg.o
 ./debug/moc_cadastroalunodlg.o
 ./debug/moc_alunoemprestimodlg.o
 ./debug/moc_professoremprestimodlg.o
+./debug/moc_ajudadlg.o
 );

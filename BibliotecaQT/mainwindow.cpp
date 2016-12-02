@@ -40,7 +40,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->buscarBTN, SIGNAL(clicked()), this, SLOT(buscarUsuarios()));
     connect(ui->actionAlunoEmp,SIGNAL(triggered()),this,SLOT(janelaEmprestimoAluno()));
     connect(ui->actionProfessorEmp,SIGNAL(triggered()),this,SLOT(janelaEmprestimoProf()));
-    connect(ui->menuSobre, SIGNAL(clicked()), this, SLOT(janelaAjuda());
+    connect(ui->menuSobre, SIGNAL(clicked()), this, SLOT(janelaAjuda()));
 }
 
 MainWindow::~MainWindow()
@@ -72,11 +72,11 @@ void MainWindow::janelaEmprestimoProf(){
     ProfessorEmprestimoDLG* janela=new ProfessorEmprestimoDLG();
     janela->exec();
 }
-<<<<<<< HEAD
+//<<<<<<< HEAD
 void MainWindow::janelaAjuda(){
     ajudaDlg* janela = new ajudaDlg();
     janela->exec();
-=======
+}
 void MainWindow::buscarUsuarios(){
     QSqlDatabase bd = ConnectionDB::get_bd();
 
@@ -91,7 +91,6 @@ void MainWindow::buscarUsuarios(){
     model->setQuery(*qry);
 
     ui->usuarioTable->setModel(model);
->>>>>>> origin/master
 }
 
 

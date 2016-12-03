@@ -18,7 +18,6 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QTableView>
 
 QT_BEGIN_NAMESPACE
 
@@ -26,7 +25,7 @@ class Ui_AlunoEmprestimoDLG
 {
 public:
     QLineEdit *codLivroAl;
-    QLineEdit *lineEdit_3;
+    QLineEdit *matAluno;
     QLabel *label;
     QLabel *label_2;
     QLabel *label_3;
@@ -35,8 +34,8 @@ public:
     QPushButton *buscButton_2Al;
     QPushButton *pushButton_3;
     QPushButton *CanButtonEmAl;
-    QTableView *nomeAluno;
-    QTableView *tituloLivroAl;
+    QLineEdit *tituloLivroAl;
+    QLineEdit *nomeAluno;
 
     void setupUi(QDialog *AlunoEmprestimoDLG)
     {
@@ -46,10 +45,10 @@ public:
         codLivroAl = new QLineEdit(AlunoEmprestimoDLG);
         codLivroAl->setObjectName(QStringLiteral("codLivroAl"));
         codLivroAl->setGeometry(QRect(20, 60, 131, 20));
-        lineEdit_3 = new QLineEdit(AlunoEmprestimoDLG);
-        lineEdit_3->setObjectName(QStringLiteral("lineEdit_3"));
-        lineEdit_3->setEnabled(false);
-        lineEdit_3->setGeometry(QRect(20, 140, 131, 20));
+        matAluno = new QLineEdit(AlunoEmprestimoDLG);
+        matAluno->setObjectName(QStringLiteral("matAluno"));
+        matAluno->setEnabled(false);
+        matAluno->setGeometry(QRect(20, 140, 131, 20));
         label = new QLabel(AlunoEmprestimoDLG);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(20, 40, 81, 16));
@@ -58,10 +57,10 @@ public:
         label_2->setGeometry(QRect(20, 120, 91, 16));
         label_3 = new QLabel(AlunoEmprestimoDLG);
         label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setGeometry(QRect(190, 120, 71, 16));
+        label_3->setGeometry(QRect(180, 120, 71, 16));
         label_4 = new QLabel(AlunoEmprestimoDLG);
         label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setGeometry(QRect(190, 40, 71, 16));
+        label_4->setGeometry(QRect(180, 40, 71, 16));
         BotaoBuscarAl = new QPushButton(AlunoEmprestimoDLG);
         BotaoBuscarAl->setObjectName(QStringLiteral("BotaoBuscarAl"));
         BotaoBuscarAl->setGeometry(QRect(20, 90, 75, 23));
@@ -71,18 +70,19 @@ public:
         buscButton_2Al->setGeometry(QRect(20, 170, 75, 23));
         pushButton_3 = new QPushButton(AlunoEmprestimoDLG);
         pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
+        pushButton_3->setEnabled(false);
         pushButton_3->setGeometry(QRect(80, 270, 111, 23));
         CanButtonEmAl = new QPushButton(AlunoEmprestimoDLG);
         CanButtonEmAl->setObjectName(QStringLiteral("CanButtonEmAl"));
         CanButtonEmAl->setGeometry(QRect(210, 270, 75, 23));
-        nomeAluno = new QTableView(AlunoEmprestimoDLG);
-        nomeAluno->setObjectName(QStringLiteral("nomeAluno"));
-        nomeAluno->setEnabled(false);
-        nomeAluno->setGeometry(QRect(190, 140, 181, 20));
-        tituloLivroAl = new QTableView(AlunoEmprestimoDLG);
+        tituloLivroAl = new QLineEdit(AlunoEmprestimoDLG);
         tituloLivroAl->setObjectName(QStringLiteral("tituloLivroAl"));
         tituloLivroAl->setEnabled(false);
-        tituloLivroAl->setGeometry(QRect(190, 60, 181, 21));
+        tituloLivroAl->setGeometry(QRect(180, 60, 201, 20));
+        nomeAluno = new QLineEdit(AlunoEmprestimoDLG);
+        nomeAluno->setObjectName(QStringLiteral("nomeAluno"));
+        nomeAluno->setEnabled(false);
+        nomeAluno->setGeometry(QRect(180, 140, 201, 20));
 
         retranslateUi(AlunoEmprestimoDLG);
 

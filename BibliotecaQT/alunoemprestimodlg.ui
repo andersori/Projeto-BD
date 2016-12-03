@@ -157,15 +157,12 @@
    </property>
   </widget>
   <widget class="QTableView" name="tituloLivroAl">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
    <property name="geometry">
     <rect>
      <x>190</x>
      <y>60</y>
      <width>181</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

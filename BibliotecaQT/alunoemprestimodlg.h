@@ -16,11 +16,11 @@ public:
     explicit AlunoEmprestimoDLG(QWidget *parent = 0);
     ~AlunoEmprestimoDLG();
 
+private slots:
+    void buscarLivro();
 private:
     Ui::AlunoEmprestimoDLG *ui;
     ConnectionDB* con;
-
-    void buscarLivro();
 };
 
 #endif // ALUNOEMPRESTIMODLG_H

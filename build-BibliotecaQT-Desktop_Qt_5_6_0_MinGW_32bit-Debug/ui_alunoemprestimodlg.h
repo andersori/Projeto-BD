@@ -81,8 +81,7 @@ public:
         nomeAluno->setGeometry(QRect(190, 140, 181, 20));
         tituloLivroAl = new QTableView(AlunoEmprestimoDLG);
         tituloLivroAl->setObjectName(QStringLiteral("tituloLivroAl"));
-        tituloLivroAl->setEnabled(false);
-        tituloLivroAl->setGeometry(QRect(190, 60, 181, 20));
+        tituloLivroAl->setGeometry(QRect(190, 60, 181, 21));
 
         retranslateUi(AlunoEmprestimoDLG);
 

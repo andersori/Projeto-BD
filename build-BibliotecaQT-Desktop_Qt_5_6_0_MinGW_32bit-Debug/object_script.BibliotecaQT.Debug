@@ -1,0 +1,17 @@
+INPUT(
+./debug/main.o
+./debug/mainwindow.o
+./debug/logindlg.o
+./debug/connectiondb.o
+./debug/alunoemprestimodlg.o
+./debug/professoremprestimodlg.o
+./debug/ajudadlg.o
+./debug/cadastrousuariodlg.o
+./debug/qrc_resources.o
+./debug/moc_mainwindow.o
+./debug/moc_logindlg.o
+./debug/moc_alunoemprestimodlg.o
+./debug/moc_professoremprestimodlg.o
+./debug/moc_ajudadlg.o
+./debug/moc_cadastrousuariodlg.o
+);

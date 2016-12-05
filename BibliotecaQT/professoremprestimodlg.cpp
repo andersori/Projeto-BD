@@ -42,6 +42,7 @@ void ProfessorEmprestimoDLG::buscarLivroProf(){
     }else{
         QMessageBox::warning(this,tr("ERRO"),tr("NÃO EXISTE LIVRO COM ESTE CÓDIGO, CADASTRADO."));
         ui->lineEdit->clear();
+        ui->tituloLivroPr->setEnabled(false);
     }
 }
 void ProfessorEmprestimoDLG::buscarProf(){
@@ -57,6 +58,7 @@ void ProfessorEmprestimoDLG::buscarProf(){
     }else{
         QMessageBox::warning(this,tr("ERRO"),tr("NÃO EXISTE PROFESSOR COM ESTE SIAPE, CADASTRADO."));
         ui->lineEdit_2->clear();
+        ui->nomeProf->setEnabled(false);
     }
 }
 
@@ -71,10 +73,10 @@ void ProfessorEmprestimoDLG::efetuarEmprestimo(){
     //TESTANDO ESSA PARA PARA VERIFICAR SE O USUARIO TEM ALGUM LIVRO ATRASADO
     QString pendencia("SELECT data_devedevolver FROM emprestimo WHERE id_usuario="+id_usuario);
     QSqlQuery b=bd.exec(pendencia);
-    int i=0;
+
     while(b.next()){//ESTE LAÇO É USADO PARA VERIFICAR SE TEM PENDECIA NA BIBLIOTECA
-        QDate prazo=b.value(i).toDate();
-        if(prazo.operator <=(QDate::currentDate())&&(prazo.isNull())){
+        QDate prazo=b.value(0).toDate();
+        if(prazo.operator <=(QDate::currentDate())&&(prazo.isValid())){
                 QMessageBox::warning(this,tr("ERRO"),tr("NÃO FOI POSSIVEL EFETUAR O EMPRESTIMO \nPROFESSOR COM PENDENCIAS NA BIBLIOTECAS"));
                 ui->lineEdit->clear();
                 ui->lineEdit_2->clear();
@@ -87,14 +89,13 @@ void ProfessorEmprestimoDLG::efetuarEmprestimo(){
                 ui->tituloLivroPr->setEnabled(false);
                 return;
             }
-            i++;
     }
 
-    QString data=QDate::currentDate().toString("yyyyMdd");//PEGANDO A DATA NO MOMENTO DO EMPRESTIMO
+    QString data=QDate::currentDate().toString("yyyy-MM-dd");//PEGANDO A DATA NO MOMENTO DO EMPRESTIMO
     QDate IssueDate=QDate::currentDate();//tres prixmo linhas é só pra add 15 dias a mais na data atual, para ser a data de devolucao
     QDate ReturnDate;
     ReturnDate=IssueDate.addDays(15);
-    QString dataDevolver=ReturnDate.toString("yyyyMdd");
+    QString dataDevolver=ReturnDate.toString("yyyy-MM-dd");
 
     QSqlQuery tent;
     tent.prepare("INSERT INTO emprestimo(id_exemplar,id_usuario,data_emprestimo,data_devedevolver,qtd_renovacao)"
@@ -102,7 +103,7 @@ void ProfessorEmprestimoDLG::efetuarEmprestimo(){
     tent.bindValue(":id_exemplar",codLivroAl);
     tent.bindValue(":id_usuario",id_usuario);
     tent.bindValue(":data_emprestimo",data);
-    tent.bindValue(":data_devedevolver",dataDevolver);
+    tent.bindValue(":data_devedevolver",20151205);
     tent.bindValue(":qtd_renovacao",10);
 
     if(tent.exec()){
@@ -114,6 +115,11 @@ void ProfessorEmprestimoDLG::efetuarEmprestimo(){
         ui->lineEdit_2->clear();
         ui->tituloLivroPr->clear();
         ui->nomeProf->clear();
+        ui->efetuarEmprestimoButton_3->setEnabled(false);
+        ui->empButtonProf2->setEnabled(false);
+        ui->lineEdit_2->setEnabled(false);
+        ui->tituloLivroPr->setEnabled(false);
+        ui->nomeProf->setEnabled(false);
     }
     else{
         QMessageBox::warning(this,tr("ERRO"),tr("NÃO FOI POSSIVEL EFETUAR O EMPRÉSTIMO"));

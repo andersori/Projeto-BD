@@ -84,9 +84,22 @@
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_2">
             <item>
+             <spacer name="horizontalSpacer_3">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
              <widget class="QLabel" name="buscarPorLB">
               <property name="text">
-               <string>Buscar por</string>
+               <string>Busca por</string>
               </property>
              </widget>
             </item>
@@ -94,7 +107,7 @@
              <widget class="QComboBox" name="tipoDeBuscaUsuarioCB">
               <item>
                <property name="text">
-                <string>Matricicula</string>
+                <string>Todos</string>
                </property>
               </item>
               <item>
@@ -109,15 +122,35 @@
               </item>
              </widget>
             </item>
+            <item>
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
            </layout>
           </item>
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_3">
             <item>
+             <widget class="QLabel" name="restricaoDeBuscaUsuarioLB">
+              <property name="text">
+               <string>Tudos</string>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="QLineEdit" name="pesquisaUsuarioLE"/>
             </item>
             <item>
-             <widget class="QPushButton" name="buscarBTN">
+             <widget class="QPushButton" name="buscarUsuarioBTN">
               <property name="text">
                <string>Buscar</string>
               </property>
@@ -147,6 +180,19 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_5">
           <item>
+           <spacer name="horizontalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
            <widget class="QLabel" name="label_5">
             <property name="text">
              <string>Bucar por</string>
@@ -155,6 +201,11 @@
           </item>
           <item>
            <widget class="QComboBox" name="tipoDeBuscaPublicacaoCB">
+            <item>
+             <property name="text">
+              <string>Todas</string>
+             </property>
+            </item>
             <item>
              <property name="text">
               <string>Título</string>
@@ -172,42 +223,30 @@
             </item>
            </widget>
           </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_4">
           <item>
-           <widget class="QCheckBox" name="publicacaoLivroCheck">
-            <property name="text">
-             <string>Livro</string>
+           <spacer name="horizontalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
             </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="publicacaoRevistaCheck">
-            <property name="text">
-             <string>Revista</string>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
             </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="publicacaoPeriodicosCheck">
-            <property name="text">
-             <string>Periódicos</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="publicacaoArtigoCheck">
-            <property name="text">
-             <string>Artigo</string>
-            </property>
-           </widget>
+           </spacer>
           </item>
          </layout>
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_6">
+          <item>
+           <widget class="QLabel" name="buscarPublicacaoLB">
+            <property name="text">
+             <string>Tudo</string>
+            </property>
+           </widget>
+          </item>
           <item>
            <widget class="QLineEdit" name="pesquisaPublicacaoLE"/>
           </item>
@@ -240,6 +279,19 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_8">
           <item>
+           <spacer name="horizontalSpacer_6">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
            <widget class="QLabel" name="label_4">
             <property name="text">
              <string>Pesquisar por</string>
@@ -259,6 +311,19 @@
              </property>
             </item>
            </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_7">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
           </item>
          </layout>
         </item>
@@ -285,14 +350,24 @@
            </spacer>
           </item>
           <item>
-           <widget class="QCheckBox" name="definirDataEmprestimoCheck">
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item>
            <widget class="QDateEdit" name="dataEmprestimo">
+            <property name="minimumDateTime">
+             <datetime>
+              <hour>0</hour>
+              <minute>0</minute>
+              <second>0</second>
+              <year>2000</year>
+              <month>1</month>
+              <day>1</day>
+             </datetime>
+            </property>
+            <property name="minimumDate">
+             <date>
+              <year>2000</year>
+              <month>1</month>
+              <day>1</day>
+             </date>
+            </property>
             <property name="calendarPopup">
              <bool>true</bool>
             </property>
@@ -309,6 +384,13 @@
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_9">
+          <item>
+           <widget class="QLabel" name="label_7">
+            <property name="text">
+             <string>TextLabel</string>
+            </property>
+           </widget>
+          </item>
           <item>
            <widget class="QLineEdit" name="pesquisaEmprestimoLE"/>
           </item>
@@ -343,14 +425,7 @@
     <property name="title">
      <string>Cadastro</string>
     </property>
-    <widget class="QMenu" name="menuUsuario">
-     <property name="title">
-      <string>Usuário</string>
-     </property>
-     <addaction name="actionAlunoCad"/>
-     <addaction name="actionProfessorCad"/>
-    </widget>
-    <addaction name="menuUsuario"/>
+    <addaction name="actionUsuario"/>
     <addaction name="actionFuncionario"/>
     <addaction name="actionPublicacao"/>
    </widget>
@@ -366,15 +441,15 @@
      <string>Devolução</string>
     </property>
    </widget>
-   <widget class="QMenu" name="menuSobre">
+   <widget class="QMenu" name="menuAjuda">
     <property name="title">
-     <string>Sobre</string>
+     <string>Ajuda</string>
     </property>
    </widget>
    <addaction name="menuCadastro"/>
    <addaction name="menuEmprestimo"/>
    <addaction name="menuDevolucao"/>
-   <addaction name="menuSobre"/>
+   <addaction name="menuAjuda"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -413,6 +488,11 @@
   <action name="actionProfessorEmp">
    <property name="text">
     <string>Professor</string>
+   </property>
+  </action>
+  <action name="actionUsuario">
+   <property name="text">
+    <string>Usuário</string>
    </property>
   </action>
  </widget>

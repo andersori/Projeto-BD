@@ -23,25 +23,16 @@ LoginDLG::LoginDLG(QWidget *parent) :
     ui->iconeLB->setPixmap(pix);                //colocando num label da janela de login
 
     //Quando o 'cancelarBTN' for clicado a função 'close()' sera executada
-    connect(ui->cancelarBTN, SIGNAL(clicked()), this, SLOT(close()));
+    connect(ui->cancelarBTN, SIGNAL(clicked()), this, SLOT(cancelar()));
     //Quando o 'loginBTN' for clicado a função 'login()' sera executada
     connect(ui->loginBTN, SIGNAL(clicked()), this, SLOT(login()));
+
 }
 
 //Destrutor
 LoginDLG::~LoginDLG()
 {
     delete ui;
-}
-
-bool LoginDLG::getLogado() const
-{
-    return logado;
-}
-
-void LoginDLG::setLogado(bool value)
-{
-    logado = value;
 }
 
 //Slot login, ele será executado quando o botão de login for precionado
@@ -69,9 +60,15 @@ void LoginDLG::login()
         //Se encontrou, então o usuário esta logado
         QString nome = query.value(0).toString();
         qDebug() << tr("Usuário: ") + nome;
-        setLogado(true);
+
         close();
     }
 
     query.clear();
+}
+
+void LoginDLG::cancelar()
+{
+    close();
+    exit(0);
 }

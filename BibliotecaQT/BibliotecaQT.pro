@@ -16,25 +16,25 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     logindlg.cpp \
     connectiondb.cpp \
-    cadastroalunodlg.cpp \
     alunoemprestimodlg.cpp \
     professoremprestimodlg.cpp \
-    ajudadlg.cpp
+    ajudadlg.cpp \
+    cadastrousuariodlg.cpp
 
 HEADERS  += mainwindow.h \
     logindlg.h \
     connectiondb.h \
-    cadastroalunodlg.h \
     alunoemprestimodlg.h \
     professoremprestimodlg.h \
-    ajudadlg.h
+    ajudadlg.h \
+    cadastrousuariodlg.h
 
 FORMS    += mainwindow.ui \
     logindlg.ui \
-    cadastroalunodlg.ui \
     alunoemprestimodlg.ui \
     professoremprestimodlg.ui \
-    ajudadlg.ui
+    ajudadlg.ui \
+    cadastrousuariodlg.ui
 
 RESOURCES += \
     resources.qrc

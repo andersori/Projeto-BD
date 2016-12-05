@@ -19,6 +19,7 @@ public:
 private slots:
     void buscarLivro();
     void buscarMatAl();
+    void efetuarEmprestimoAl();
 private:
     Ui::AlunoEmprestimoDLG *ui;
     ConnectionDB* con;

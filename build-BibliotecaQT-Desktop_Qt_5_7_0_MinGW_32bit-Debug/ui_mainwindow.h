@@ -14,7 +14,6 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QDateEdit>
 #include <QtWidgets/QHBoxLayout>
@@ -44,6 +43,7 @@ public:
     QAction *actionProfessorCad;
     QAction *actionAlunoEmp;
     QAction *actionProfessorEmp;
+    QAction *actionUsuario;
     QWidget *centralWidget;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout;
@@ -57,48 +57,50 @@ public:
     QVBoxLayout *verticalLayout_2;
     QLabel *label;
     QHBoxLayout *horizontalLayout_2;
+    QSpacerItem *horizontalSpacer_3;
     QLabel *buscarPorLB;
-    QComboBox *tipoDeBuscaCB;
+    QComboBox *tipoDeBuscaUsuarioCB;
+    QSpacerItem *horizontalSpacer_2;
     QHBoxLayout *horizontalLayout_3;
-    QLineEdit *pesquisaLE;
-    QPushButton *buscarBTN;
+    QLabel *restricaoDeBuscaUsuarioLB;
+    QLineEdit *pesquisaUsuarioLE;
+    QPushButton *buscarUsuarioBTN;
     QTableView *usuarioTable;
     QWidget *publicacoesPG;
     QVBoxLayout *verticalLayout_4;
     QLabel *label_2;
     QHBoxLayout *horizontalLayout_5;
+    QSpacerItem *horizontalSpacer_5;
     QLabel *label_5;
-    QComboBox *comboBox;
-    QHBoxLayout *horizontalLayout_4;
-    QCheckBox *checkBox_3;
-    QCheckBox *checkBox;
-    QCheckBox *checkBox_4;
-    QCheckBox *checkBox_2;
+    QComboBox *tipoDeBuscaPublicacaoCB;
+    QSpacerItem *horizontalSpacer_4;
     QHBoxLayout *horizontalLayout_6;
-    QLineEdit *lineEdit;
-    QPushButton *pushButton_2;
-    QTableView *tableView_2;
+    QLabel *buscarPublicacaoLB;
+    QLineEdit *pesquisaPublicacaoLE;
+    QPushButton *buscarPublicacoesBTN;
+    QTableView *publicacoesTable;
     QWidget *emprestimoPG;
     QVBoxLayout *verticalLayout_5;
     QLabel *label_3;
     QHBoxLayout *horizontalLayout_8;
+    QSpacerItem *horizontalSpacer_6;
     QLabel *label_4;
-    QComboBox *comboBox_2;
+    QComboBox *tipoDeBuscaEmprestimoCB;
+    QSpacerItem *horizontalSpacer_7;
     QHBoxLayout *horizontalLayout_7;
     QLabel *label_6;
     QSpacerItem *horizontalSpacer;
-    QCheckBox *checkBox_5;
-    QDateEdit *dateEdit;
+    QDateEdit *dataEmprestimo;
     QHBoxLayout *horizontalLayout_9;
-    QLineEdit *lineEdit_2;
-    QPushButton *pushButton_3;
-    QTableView *tableView_3;
+    QLabel *label_7;
+    QLineEdit *pesquisaEmprestimoLE;
+    QPushButton *buscarEmprestimosBTN;
+    QTableView *emprestimoBTN;
     QMenuBar *menuBar;
     QMenu *menuCadastro;
-    QMenu *menuUsuario;
     QMenu *menuEmprestimo;
     QMenu *menuDevolucao;
-    QMenu *menuSobre;
+    QMenu *menuAjuda;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -119,6 +121,8 @@ public:
         actionAlunoEmp->setObjectName(QStringLiteral("actionAlunoEmp"));
         actionProfessorEmp = new QAction(MainWindow);
         actionProfessorEmp->setObjectName(QStringLiteral("actionProfessorEmp"));
+        actionUsuario = new QAction(MainWindow);
+        actionUsuario->setObjectName(QStringLiteral("actionUsuario"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         horizontalLayout = new QHBoxLayout(centralWidget);
@@ -157,6 +161,7 @@ public:
 
         paginas = new QStackedWidget(centralWidget);
         paginas->setObjectName(QStringLiteral("paginas"));
+        paginas->setEnabled(true);
         inicialPG = new QWidget();
         inicialPG->setObjectName(QStringLiteral("inicialPG"));
         paginas->addWidget(inicialPG);
@@ -178,15 +183,23 @@ public:
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_3);
+
         buscarPorLB = new QLabel(usuariosPG);
         buscarPorLB->setObjectName(QStringLiteral("buscarPorLB"));
 
         horizontalLayout_2->addWidget(buscarPorLB);
 
-        tipoDeBuscaCB = new QComboBox(usuariosPG);
-        tipoDeBuscaCB->setObjectName(QStringLiteral("tipoDeBuscaCB"));
+        tipoDeBuscaUsuarioCB = new QComboBox(usuariosPG);
+        tipoDeBuscaUsuarioCB->setObjectName(QStringLiteral("tipoDeBuscaUsuarioCB"));
 
-        horizontalLayout_2->addWidget(tipoDeBuscaCB);
+        horizontalLayout_2->addWidget(tipoDeBuscaUsuarioCB);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_2);
 
 
         verticalLayout_2->addLayout(horizontalLayout_2);
@@ -194,15 +207,20 @@ public:
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setSpacing(6);
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
-        pesquisaLE = new QLineEdit(usuariosPG);
-        pesquisaLE->setObjectName(QStringLiteral("pesquisaLE"));
+        restricaoDeBuscaUsuarioLB = new QLabel(usuariosPG);
+        restricaoDeBuscaUsuarioLB->setObjectName(QStringLiteral("restricaoDeBuscaUsuarioLB"));
 
-        horizontalLayout_3->addWidget(pesquisaLE);
+        horizontalLayout_3->addWidget(restricaoDeBuscaUsuarioLB);
 
-        buscarBTN = new QPushButton(usuariosPG);
-        buscarBTN->setObjectName(QStringLiteral("buscarBTN"));
+        pesquisaUsuarioLE = new QLineEdit(usuariosPG);
+        pesquisaUsuarioLE->setObjectName(QStringLiteral("pesquisaUsuarioLE"));
 
-        horizontalLayout_3->addWidget(buscarBTN);
+        horizontalLayout_3->addWidget(pesquisaUsuarioLE);
+
+        buscarUsuarioBTN = new QPushButton(usuariosPG);
+        buscarUsuarioBTN->setObjectName(QStringLiteral("buscarUsuarioBTN"));
+
+        horizontalLayout_3->addWidget(buscarUsuarioBTN);
 
 
         verticalLayout_2->addLayout(horizontalLayout_3);
@@ -231,65 +249,52 @@ public:
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setSpacing(6);
         horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
+        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_5->addItem(horizontalSpacer_5);
+
         label_5 = new QLabel(publicacoesPG);
         label_5->setObjectName(QStringLiteral("label_5"));
 
         horizontalLayout_5->addWidget(label_5);
 
-        comboBox = new QComboBox(publicacoesPG);
-        comboBox->setObjectName(QStringLiteral("comboBox"));
+        tipoDeBuscaPublicacaoCB = new QComboBox(publicacoesPG);
+        tipoDeBuscaPublicacaoCB->setObjectName(QStringLiteral("tipoDeBuscaPublicacaoCB"));
 
-        horizontalLayout_5->addWidget(comboBox);
+        horizontalLayout_5->addWidget(tipoDeBuscaPublicacaoCB);
+
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_5->addItem(horizontalSpacer_4);
 
 
         verticalLayout_4->addLayout(horizontalLayout_5);
 
-        horizontalLayout_4 = new QHBoxLayout();
-        horizontalLayout_4->setSpacing(6);
-        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
-        checkBox_3 = new QCheckBox(publicacoesPG);
-        checkBox_3->setObjectName(QStringLiteral("checkBox_3"));
-
-        horizontalLayout_4->addWidget(checkBox_3);
-
-        checkBox = new QCheckBox(publicacoesPG);
-        checkBox->setObjectName(QStringLiteral("checkBox"));
-
-        horizontalLayout_4->addWidget(checkBox);
-
-        checkBox_4 = new QCheckBox(publicacoesPG);
-        checkBox_4->setObjectName(QStringLiteral("checkBox_4"));
-
-        horizontalLayout_4->addWidget(checkBox_4);
-
-        checkBox_2 = new QCheckBox(publicacoesPG);
-        checkBox_2->setObjectName(QStringLiteral("checkBox_2"));
-
-        horizontalLayout_4->addWidget(checkBox_2);
-
-
-        verticalLayout_4->addLayout(horizontalLayout_4);
-
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setSpacing(6);
         horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
-        lineEdit = new QLineEdit(publicacoesPG);
-        lineEdit->setObjectName(QStringLiteral("lineEdit"));
+        buscarPublicacaoLB = new QLabel(publicacoesPG);
+        buscarPublicacaoLB->setObjectName(QStringLiteral("buscarPublicacaoLB"));
 
-        horizontalLayout_6->addWidget(lineEdit);
+        horizontalLayout_6->addWidget(buscarPublicacaoLB);
 
-        pushButton_2 = new QPushButton(publicacoesPG);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        pesquisaPublicacaoLE = new QLineEdit(publicacoesPG);
+        pesquisaPublicacaoLE->setObjectName(QStringLiteral("pesquisaPublicacaoLE"));
 
-        horizontalLayout_6->addWidget(pushButton_2);
+        horizontalLayout_6->addWidget(pesquisaPublicacaoLE);
+
+        buscarPublicacoesBTN = new QPushButton(publicacoesPG);
+        buscarPublicacoesBTN->setObjectName(QStringLiteral("buscarPublicacoesBTN"));
+
+        horizontalLayout_6->addWidget(buscarPublicacoesBTN);
 
 
         verticalLayout_4->addLayout(horizontalLayout_6);
 
-        tableView_2 = new QTableView(publicacoesPG);
-        tableView_2->setObjectName(QStringLiteral("tableView_2"));
+        publicacoesTable = new QTableView(publicacoesPG);
+        publicacoesTable->setObjectName(QStringLiteral("publicacoesTable"));
 
-        verticalLayout_4->addWidget(tableView_2);
+        verticalLayout_4->addWidget(publicacoesTable);
 
         paginas->addWidget(publicacoesPG);
         emprestimoPG = new QWidget();
@@ -307,15 +312,23 @@ public:
         horizontalLayout_8 = new QHBoxLayout();
         horizontalLayout_8->setSpacing(6);
         horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
+        horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_8->addItem(horizontalSpacer_6);
+
         label_4 = new QLabel(emprestimoPG);
         label_4->setObjectName(QStringLiteral("label_4"));
 
         horizontalLayout_8->addWidget(label_4);
 
-        comboBox_2 = new QComboBox(emprestimoPG);
-        comboBox_2->setObjectName(QStringLiteral("comboBox_2"));
+        tipoDeBuscaEmprestimoCB = new QComboBox(emprestimoPG);
+        tipoDeBuscaEmprestimoCB->setObjectName(QStringLiteral("tipoDeBuscaEmprestimoCB"));
 
-        horizontalLayout_8->addWidget(comboBox_2);
+        horizontalLayout_8->addWidget(tipoDeBuscaEmprestimoCB);
+
+        horizontalSpacer_7 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_8->addItem(horizontalSpacer_7);
 
 
         verticalLayout_5->addLayout(horizontalLayout_8);
@@ -332,17 +345,14 @@ public:
 
         horizontalLayout_7->addItem(horizontalSpacer);
 
-        checkBox_5 = new QCheckBox(emprestimoPG);
-        checkBox_5->setObjectName(QStringLiteral("checkBox_5"));
+        dataEmprestimo = new QDateEdit(emprestimoPG);
+        dataEmprestimo->setObjectName(QStringLiteral("dataEmprestimo"));
+        dataEmprestimo->setMinimumDateTime(QDateTime(QDate(2000, 1, 1), QTime(0, 0, 0)));
+        dataEmprestimo->setMinimumDate(QDate(2000, 1, 1));
+        dataEmprestimo->setCalendarPopup(true);
+        dataEmprestimo->setDate(QDate(2000, 1, 6));
 
-        horizontalLayout_7->addWidget(checkBox_5);
-
-        dateEdit = new QDateEdit(emprestimoPG);
-        dateEdit->setObjectName(QStringLiteral("dateEdit"));
-        dateEdit->setCalendarPopup(true);
-        dateEdit->setDate(QDate(2000, 1, 6));
-
-        horizontalLayout_7->addWidget(dateEdit);
+        horizontalLayout_7->addWidget(dataEmprestimo);
 
 
         verticalLayout_5->addLayout(horizontalLayout_7);
@@ -350,23 +360,28 @@ public:
         horizontalLayout_9 = new QHBoxLayout();
         horizontalLayout_9->setSpacing(6);
         horizontalLayout_9->setObjectName(QStringLiteral("horizontalLayout_9"));
-        lineEdit_2 = new QLineEdit(emprestimoPG);
-        lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
+        label_7 = new QLabel(emprestimoPG);
+        label_7->setObjectName(QStringLiteral("label_7"));
 
-        horizontalLayout_9->addWidget(lineEdit_2);
+        horizontalLayout_9->addWidget(label_7);
 
-        pushButton_3 = new QPushButton(emprestimoPG);
-        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
+        pesquisaEmprestimoLE = new QLineEdit(emprestimoPG);
+        pesquisaEmprestimoLE->setObjectName(QStringLiteral("pesquisaEmprestimoLE"));
 
-        horizontalLayout_9->addWidget(pushButton_3);
+        horizontalLayout_9->addWidget(pesquisaEmprestimoLE);
+
+        buscarEmprestimosBTN = new QPushButton(emprestimoPG);
+        buscarEmprestimosBTN->setObjectName(QStringLiteral("buscarEmprestimosBTN"));
+
+        horizontalLayout_9->addWidget(buscarEmprestimosBTN);
 
 
         verticalLayout_5->addLayout(horizontalLayout_9);
 
-        tableView_3 = new QTableView(emprestimoPG);
-        tableView_3->setObjectName(QStringLiteral("tableView_3"));
+        emprestimoBTN = new QTableView(emprestimoPG);
+        emprestimoBTN->setObjectName(QStringLiteral("emprestimoBTN"));
 
-        verticalLayout_5->addWidget(tableView_3);
+        verticalLayout_5->addWidget(emprestimoBTN);
 
         paginas->addWidget(emprestimoPG);
 
@@ -378,14 +393,12 @@ public:
         menuBar->setGeometry(QRect(0, 0, 514, 21));
         menuCadastro = new QMenu(menuBar);
         menuCadastro->setObjectName(QStringLiteral("menuCadastro"));
-        menuUsuario = new QMenu(menuCadastro);
-        menuUsuario->setObjectName(QStringLiteral("menuUsuario"));
         menuEmprestimo = new QMenu(menuBar);
         menuEmprestimo->setObjectName(QStringLiteral("menuEmprestimo"));
         menuDevolucao = new QMenu(menuBar);
         menuDevolucao->setObjectName(QStringLiteral("menuDevolucao"));
-        menuSobre = new QMenu(menuBar);
-        menuSobre->setObjectName(QStringLiteral("menuSobre"));
+        menuAjuda = new QMenu(menuBar);
+        menuAjuda->setObjectName(QStringLiteral("menuAjuda"));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -397,18 +410,16 @@ public:
         menuBar->addAction(menuCadastro->menuAction());
         menuBar->addAction(menuEmprestimo->menuAction());
         menuBar->addAction(menuDevolucao->menuAction());
-        menuBar->addAction(menuSobre->menuAction());
-        menuCadastro->addAction(menuUsuario->menuAction());
+        menuBar->addAction(menuAjuda->menuAction());
+        menuCadastro->addAction(actionUsuario);
         menuCadastro->addAction(actionFuncionario);
         menuCadastro->addAction(actionPublicacao);
-        menuUsuario->addAction(actionAlunoCad);
-        menuUsuario->addAction(actionProfessorCad);
         menuEmprestimo->addAction(actionAlunoEmp);
         menuEmprestimo->addAction(actionProfessorEmp);
 
         retranslateUi(MainWindow);
 
-        paginas->setCurrentIndex(1);
+        paginas->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -423,46 +434,45 @@ public:
         actionProfessorCad->setText(QApplication::translate("MainWindow", "Professor", 0));
         actionAlunoEmp->setText(QApplication::translate("MainWindow", "Aluno", 0));
         actionProfessorEmp->setText(QApplication::translate("MainWindow", "Professor", 0));
+        actionUsuario->setText(QApplication::translate("MainWindow", "Usu\303\241rio", 0));
         usuariosCadastradosBTN->setText(QString());
         publicacoesBTN->setText(QString());
         emprestimosBTN->setText(QString());
         label->setText(QApplication::translate("MainWindow", "Pagina de Usu\303\241rios", 0));
-        buscarPorLB->setText(QApplication::translate("MainWindow", "Buscar por", 0));
-        tipoDeBuscaCB->clear();
-        tipoDeBuscaCB->insertItems(0, QStringList()
-         << QApplication::translate("MainWindow", "Matricicula", 0)
+        buscarPorLB->setText(QApplication::translate("MainWindow", "Busca por", 0));
+        tipoDeBuscaUsuarioCB->clear();
+        tipoDeBuscaUsuarioCB->insertItems(0, QStringList()
+         << QApplication::translate("MainWindow", "Todos", 0)
          << QApplication::translate("MainWindow", "Nome", 0)
          << QApplication::translate("MainWindow", "E-mail", 0)
         );
-        buscarBTN->setText(QApplication::translate("MainWindow", "Buscar", 0));
+        restricaoDeBuscaUsuarioLB->setText(QApplication::translate("MainWindow", "Tudos", 0));
+        buscarUsuarioBTN->setText(QApplication::translate("MainWindow", "Buscar", 0));
         label_2->setText(QApplication::translate("MainWindow", "Pagina de publia\303\247\303\265es", 0));
         label_5->setText(QApplication::translate("MainWindow", "Bucar por", 0));
-        comboBox->clear();
-        comboBox->insertItems(0, QStringList()
+        tipoDeBuscaPublicacaoCB->clear();
+        tipoDeBuscaPublicacaoCB->insertItems(0, QStringList()
+         << QApplication::translate("MainWindow", "Todas", 0)
          << QApplication::translate("MainWindow", "T\303\255tulo", 0)
          << QApplication::translate("MainWindow", "Editora", 0)
          << QApplication::translate("MainWindow", "G\303\252nero", 0)
         );
-        checkBox_3->setText(QApplication::translate("MainWindow", "Livro", 0));
-        checkBox->setText(QApplication::translate("MainWindow", "Revista", 0));
-        checkBox_4->setText(QApplication::translate("MainWindow", "Peri\303\263dicos", 0));
-        checkBox_2->setText(QApplication::translate("MainWindow", "Artigo", 0));
-        pushButton_2->setText(QApplication::translate("MainWindow", "Buscar", 0));
+        buscarPublicacaoLB->setText(QApplication::translate("MainWindow", "Tudo", 0));
+        buscarPublicacoesBTN->setText(QApplication::translate("MainWindow", "Buscar", 0));
         label_3->setText(QApplication::translate("MainWindow", "Pagina Emprestimos", 0));
         label_4->setText(QApplication::translate("MainWindow", "Pesquisar por", 0));
-        comboBox_2->clear();
-        comboBox_2->insertItems(0, QStringList()
+        tipoDeBuscaEmprestimoCB->clear();
+        tipoDeBuscaEmprestimoCB->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "Nome do usu\303\241rio", 0)
          << QApplication::translate("MainWindow", "Id do exemplar", 0)
         );
         label_6->setText(QApplication::translate("MainWindow", "Definir data", 0));
-        checkBox_5->setText(QString());
-        pushButton_3->setText(QApplication::translate("MainWindow", "Buscar", 0));
+        label_7->setText(QApplication::translate("MainWindow", "TextLabel", 0));
+        buscarEmprestimosBTN->setText(QApplication::translate("MainWindow", "Buscar", 0));
         menuCadastro->setTitle(QApplication::translate("MainWindow", "Cadastro", 0));
-        menuUsuario->setTitle(QApplication::translate("MainWindow", "Usu\303\241rio", 0));
         menuEmprestimo->setTitle(QApplication::translate("MainWindow", "Emprestimo", 0));
         menuDevolucao->setTitle(QApplication::translate("MainWindow", "Devolu\303\247\303\243o", 0));
-        menuSobre->setTitle(QApplication::translate("MainWindow", "Sobre", 0));
+        menuAjuda->setTitle(QApplication::translate("MainWindow", "Ajuda", 0));
     } // retranslateUi
 
 };

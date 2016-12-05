@@ -3,6 +3,8 @@
 #include "logindlg.h"
 #include "connectiondb.h"
 
+#include <QDebug>
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -14,11 +16,8 @@ int main(int argc, char *argv[])
     LoginDLG login;
     login.exec();
 
-    if(login.getLogado())
-    {
-        MainWindow *m = new MainWindow();
-        m->show();
-    }
+    MainWindow *m = new MainWindow();
+    m->show();
 
     return a.exec();
 }

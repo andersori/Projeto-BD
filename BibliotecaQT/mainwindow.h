@@ -32,6 +32,7 @@ private slots:
     void janelaEmprestimoAluno();
     void janelaEmprestimoProf();
     void janelaAjuda();
+    void janelaDevolucao();
 
     //Mudar as paginas dentro do main
     void paginaUsuarios();

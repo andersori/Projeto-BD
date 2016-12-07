@@ -5,6 +5,7 @@
 #include "alunoemprestimodlg.h"
 #include "professoremprestimodlg.h"
 #include "ajudadlg.h"
+#include "devolucaodlg.h"
 
 #include <QDebug>
 #include <QPixmap>
@@ -41,7 +42,12 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionUsuario, SIGNAL(triggered(bool)), this, SLOT(janelaCadastrarUsuario()));//COMANDO PARA ABRIR OUTRA JANELA - TIPO REFERENCIAR OUTRA JANELA
     connect(ui->actionAlunoEmp,SIGNAL(triggered()),this,SLOT(janelaEmprestimoAluno()));
     connect(ui->actionProfessorEmp,SIGNAL(triggered()),this,SLOT(janelaEmprestimoProf()));
+<<<<<<< HEAD
     connect(ui->menuAjuda, SIGNAL(aboutToHide()), this, SLOT(janelaAjuda()));
+=======
+    connect(ui->menuAjuda, SIGNAL(aboutToShow()), this, SLOT(janelaAjuda()));
+    connect(ui->menuDevolucao, SIGNAL(aboutToShow()), this, SLOT(janelaDevolucao());
+>>>>>>> origin/master
 
     connect(ui->usuariosCadastradosBTN, SIGNAL(clicked()), this, SLOT(paginaUsuarios()));//usuariosCadastradosBTN É UM BOTAO QUANDO APERTADO VAI ABRIR A PAGINA paginaUsuarios
     connect(ui->emprestimosBTN, SIGNAL(clicked()), this, SLOT(paginaEmprestimos()));//SIGNAL É APOREÇÃO FEITA COM O SLOT QUE É APGINA
@@ -100,6 +106,11 @@ void MainWindow::janelaEmprestimoProf()
 void MainWindow::janelaAjuda()
 {
     ajudaDlg* janela = new ajudaDlg();
+    janela->exec();
+}
+void MainWindow::janelaDevolucao()
+{
+    devolucaoDlg* janela = new devolucao();
     janela->exec();
 }
 

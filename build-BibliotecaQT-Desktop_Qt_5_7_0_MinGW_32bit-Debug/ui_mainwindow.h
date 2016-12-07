@@ -95,7 +95,7 @@ public:
     QLabel *label_7;
     QLineEdit *pesquisaEmprestimoLE;
     QPushButton *buscarEmprestimosBTN;
-    QTableView *emprestimoBTN;
+    QTableView *emprestimoTable;
     QMenuBar *menuBar;
     QMenu *menuCadastro;
     QMenu *menuEmprestimo;
@@ -378,10 +378,10 @@ public:
 
         verticalLayout_5->addLayout(horizontalLayout_9);
 
-        emprestimoBTN = new QTableView(emprestimoPG);
-        emprestimoBTN->setObjectName(QStringLiteral("emprestimoBTN"));
+        emprestimoTable = new QTableView(emprestimoPG);
+        emprestimoTable->setObjectName(QStringLiteral("emprestimoTable"));
 
-        verticalLayout_5->addWidget(emprestimoBTN);
+        verticalLayout_5->addWidget(emprestimoTable);
 
         paginas->addWidget(emprestimoPG);
 
@@ -419,7 +419,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        paginas->setCurrentIndex(2);
+        paginas->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -463,8 +463,10 @@ public:
         label_4->setText(QApplication::translate("MainWindow", "Pesquisar por", 0));
         tipoDeBuscaEmprestimoCB->clear();
         tipoDeBuscaEmprestimoCB->insertItems(0, QStringList()
+         << QApplication::translate("MainWindow", "Tudo", 0)
          << QApplication::translate("MainWindow", "Nome do usu\303\241rio", 0)
          << QApplication::translate("MainWindow", "Id do exemplar", 0)
+         << QApplication::translate("MainWindow", "T\303\255tulo do Livro", 0)
         );
         label_6->setText(QApplication::translate("MainWindow", "Definir data", 0));
         label_7->setText(QApplication::translate("MainWindow", "TextLabel", 0));

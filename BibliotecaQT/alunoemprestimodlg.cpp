@@ -6,7 +6,7 @@
 #include <QSqlError>
 #include <QDebug>
 #include <QMessageBox>
-#include<QDate>
+#include <QDate>
 
 QString codigoLivro;
 QString matricula;

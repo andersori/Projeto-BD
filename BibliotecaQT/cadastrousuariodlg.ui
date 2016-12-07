@@ -105,7 +105,11 @@
           </spacer>
          </item>
          <item>
-          <widget class="QDateEdit" name="dataNascimentoDATE"/>
+          <widget class="QDateEdit" name="dataNascimentoDATE">
+           <property name="calendarPopup">
+            <bool>true</bool>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>

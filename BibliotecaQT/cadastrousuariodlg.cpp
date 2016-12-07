@@ -209,7 +209,7 @@ void CadastroUsuarioDLG::cadastrar()
                                 }
                                 else
                                 {
-                                    const QString mensagem = "Aluno " + ui->nomeLE->text() + "cadastrado.";
+                                    const QString mensagem = "Aluno " + ui->nomeLE->text() + " cadastrado.";
                                     QMessageBox::information(this, tr("Cadastro efetuado"), mensagem, QMessageBox::Ok);
                                 }
 
@@ -228,7 +228,7 @@ void CadastroUsuarioDLG::cadastrar()
                             }
                             else
                             {
-                                const QString mensagem = "Professor " + ui->nomeLE->text() + "cadastrado.";
+                                const QString mensagem = "Professor " + ui->nomeLE->text() + " cadastrado.";
                                 QMessageBox::information(this, tr("Cadastro efetuado"), mensagem, QMessageBox::Ok);
                             }
                         }

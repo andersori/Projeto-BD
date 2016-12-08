@@ -9,7 +9,7 @@ INPUT(
 ./debug/cadastrousuariodlg.o
 ./debug/devolucaodlg.o
 ./debug/cadastroexemplardlg.o
-./debug/renovarlivro.o
+./debug/cadastropublicacaodlg.o
 ./debug/qrc_resources.o
 ./debug/moc_mainwindow.o
 ./debug/moc_logindlg.o
@@ -19,5 +19,5 @@ INPUT(
 ./debug/moc_cadastrousuariodlg.o
 ./debug/moc_devolucaodlg.o
 ./debug/moc_cadastroexemplardlg.o
-./debug/moc_renovarlivro.o
+./debug/moc_cadastropublicacaodlg.o
 );

@@ -20,7 +20,7 @@ AlunoEmprestimoDLG::AlunoEmprestimoDLG(QWidget *parent) :
     connect(ui->buscButton_2Al,SIGNAL(clicked()),this, SLOT(buscarMatAl()));
     connect(ui->pushButton_3, SIGNAL(clicked()),this,SLOT(efetuarEmprestimoAl()));
     this->con=ConnectionDB::get_con();
-    QSqlDatabase bd=con->get_bd();   
+    QSqlDatabase bd=con->get_bd();
 }
 
 
@@ -61,12 +61,12 @@ void AlunoEmprestimoDLG::buscarMatAl(){
     IdUsuario.next();
     QString id=IdUsuario.value(0).toString();
 
-    //VERIFICO SE O CARA JÁ TEM 15 EMPRESTIMO, MAXIMO PERMITIDO
+    //VERIFICO SE O CARA JÁ TEM 10 EMPRESTIMO, MAXIMO PERMITIDO
     QString qtdEmprestimo("select count(*) from emprestimo where id_usuario="+id+" AND data_devolvido is null");
     QSqlQuery quantidade=bd.exec(qtdEmprestimo);
     quantidade.next();
     int quant= quantidade.value(0).toInt();
-    if(quant>=10){//SE TIVER DEZ EMPRESTIMO, CANCELA
+    if(quant>9){//SE TIVER DEZ EMPRESTIMO, CANCELA
         QMessageBox::warning(this,tr("ERRO"),tr("USUÁRIO TEM 10 OU MAIS EMPRÉSTIMOS EM ABERTO"));
         return;
     }
@@ -76,7 +76,7 @@ void AlunoEmprestimoDLG::buscarMatAl(){
     QSqlQuery resul=bd.exec(qry);
     if(resul.next()){
         QString consulta=resul.value(0).toString();
-       // ui->nomeAluno->setText(consulta);
+        ui->nomeAluno->setText(consulta);
         ui->pushButton_3->setEnabled(true);
     }else{
         QMessageBox::warning(this,tr("ERRO"),tr("NÃO EXISTE ALUNO COM ESTA MATRÍCULA, CADASTRADO."));

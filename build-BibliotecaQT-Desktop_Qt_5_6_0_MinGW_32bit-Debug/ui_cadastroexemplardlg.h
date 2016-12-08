@@ -18,7 +18,6 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QSpinBox>
@@ -42,10 +41,6 @@ public:
     QHBoxLayout *horizontalLayout_5;
     QLabel *anoEdicaoLB;
     QSpinBox *anoEdicaoSB;
-    QHBoxLayout *horizontalLayout_3;
-    QLabel *condicaoLB;
-    QSpacerItem *horizontalSpacer_2;
-    QLineEdit *consicaoLE;
     QHBoxLayout *horizontalLayout_6;
     QSpacerItem *horizontalSpacer_3;
     QLabel *cativoLB;
@@ -126,25 +121,6 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_5);
 
-        horizontalLayout_3 = new QHBoxLayout();
-        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
-        condicaoLB = new QLabel(CadastroExemplarDLG);
-        condicaoLB->setObjectName(QStringLiteral("condicaoLB"));
-
-        horizontalLayout_3->addWidget(condicaoLB);
-
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_3->addItem(horizontalSpacer_2);
-
-        consicaoLE = new QLineEdit(CadastroExemplarDLG);
-        consicaoLE->setObjectName(QStringLiteral("consicaoLE"));
-
-        horizontalLayout_3->addWidget(consicaoLE);
-
-
-        verticalLayout->addLayout(horizontalLayout_3);
-
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
         horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
@@ -196,7 +172,6 @@ public:
         isbnLB->setText(QApplication::translate("CadastroExemplarDLG", "ISBN", 0));
         quantidadeFacLB->setText(QApplication::translate("CadastroExemplarDLG", "Quantidade de Faciculos", 0));
         anoEdicaoLB->setText(QApplication::translate("CadastroExemplarDLG", "Ano de Edi\303\247\303\243o", 0));
-        condicaoLB->setText(QApplication::translate("CadastroExemplarDLG", "Condi\303\247\303\243o", 0));
         cativoLB->setText(QApplication::translate("CadastroExemplarDLG", "Cativo", 0));
         cativoCB->setText(QString());
         cadastrarBTN->setText(QApplication::translate("CadastroExemplarDLG", "Cadastar", 0));

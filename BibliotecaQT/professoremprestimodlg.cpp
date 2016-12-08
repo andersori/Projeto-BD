@@ -21,7 +21,7 @@ ProfessorEmprestimoDLG::ProfessorEmprestimoDLG(QWidget *parent) :
     connect(ui->empButtonProf2,SIGNAL(clicked()),this, SLOT(buscarProf()));
     connect(ui->efetuarEmprestimoButton_3,SIGNAL(clicked()),this,SLOT(efetuarEmprestimo()));
     this->con=ConnectionDB::get_con();
-    QSqlDatabase bd=con->get_bd();    
+    QSqlDatabase bd=con->get_bd();
 }
 
 ProfessorEmprestimoDLG::~ProfessorEmprestimoDLG()
@@ -70,7 +70,7 @@ void ProfessorEmprestimoDLG::buscarProf(){
     QSqlQuery quantidade=bd.exec(qtdEmprestimo);
     quantidade.next();
     int quant= quantidade.value(0).toInt();
-    if(quant>=5){//SE TIVER DEZ EMPRESTIMO, CANCELA
+    if(quant>14){//SE TIVER 15 EMPRESTIMO, CANCELA
         QMessageBox::warning(this,tr("ERRO"),tr("USUÁRIO TEM 15 OU MAIS EMPRÉSTIMOS EM ABERTO"));
         return;
     }

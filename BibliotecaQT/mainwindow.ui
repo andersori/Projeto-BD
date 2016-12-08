@@ -64,7 +64,7 @@
        <bool>true</bool>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="inicialPG"/>
       <widget class="QWidget" name="usuariosPG">
@@ -302,12 +302,22 @@
            <widget class="QComboBox" name="tipoDeBuscaEmprestimoCB">
             <item>
              <property name="text">
+              <string>Tudo</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
               <string>Nome do usuário</string>
              </property>
             </item>
             <item>
              <property name="text">
               <string>Id do exemplar</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Título do Livro</string>
              </property>
             </item>
            </widget>
@@ -404,7 +414,7 @@
          </layout>
         </item>
         <item>
-         <widget class="QTableView" name="emprestimoBTN"/>
+         <widget class="QTableView" name="emprestimoTable"/>
         </item>
        </layout>
       </widget>
@@ -426,7 +436,6 @@
      <string>Cadastro</string>
     </property>
     <addaction name="actionUsuario"/>
-    <addaction name="actionFuncionario"/>
     <addaction name="actionPublicacao"/>
    </widget>
    <widget class="QMenu" name="menuEmprestimo">

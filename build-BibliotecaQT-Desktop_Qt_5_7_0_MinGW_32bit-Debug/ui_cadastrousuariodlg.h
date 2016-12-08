@@ -159,6 +159,7 @@ public:
 
         dataNascimentoDATE = new QDateEdit(CadastroUsuarioDLG);
         dataNascimentoDATE->setObjectName(QStringLiteral("dataNascimentoDATE"));
+        dataNascimentoDATE->setCalendarPopup(true);
 
         horizontalLayout_4->addWidget(dataNascimentoDATE);
 

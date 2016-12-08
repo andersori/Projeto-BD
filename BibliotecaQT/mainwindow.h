@@ -25,6 +25,7 @@ private:
     //Função que executa uma pesquisa no banco
     void executarBuscaPorUsuario(QString consulta);
     void executarBuscaPorPublicacao(QString consulta);
+    void executarBuscaPorEmprestimo(QString consulta);
 
 private slots:
     //Exibição de outras janelas
@@ -32,6 +33,7 @@ private slots:
     void janelaEmprestimoAluno();
     void janelaEmprestimoProf();
     void janelaAjuda();
+    void janelaDevolucao();
 
     //Mudar as paginas dentro do main
     void paginaUsuarios();

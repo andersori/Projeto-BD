@@ -56,18 +56,37 @@ void CadastroExemplarDLG::cadastrar()
     {
         if(!qry->next())
         {
+            QMessageBox::information(this, tr("Erro"), tr("Publicação não encontrada."), QMessageBox::Ok);
             qDebug() << "Publicação não encontrada";
-
         }
         else
         {
             consulta.clear();
             qry->clear();
 
-            consulta.append("INSERT INTO exemplar (id_publicacao, isbn, condicao, data_entrada, ano_de_edicao, cativo, qtd_faciculos) ");
+            //--------------------------------------------------------------------------------------------
+            consulta.append("SELECT * FROM exemplar WHERE isbn = " + ui->isbnSB->text() + "");
+            if(!qry->exec(consulta))
+            {
+                qDebug() << qry->lastQuery();
+                qDebug() << qry->lastError();
+            }
+            else
+            {
+                if(qry->next())
+                {
+                    QMessageBox::information(this, tr("Erro"), tr("ISBN já cadastrado."), QMessageBox::Ok);
+                    return;
+                }
+            }
+            //--------------------------------------------------------------------------------------------
+
+            consulta.clear();
+            qry->clear();
+
+            consulta.append("INSERT INTO exemplar (id_publicacao, isbn, data_entrada, ano_de_edicao, cativo, qtd_faciculos) ");
             consulta.append("VALUES (" + ui->idPublicacaoSB->text() + ", ");
             consulta.append(ui->isbnSB->text() + ", ");
-            consulta.append("'" + ui->consicaoLE->text() + "', ");
             consulta.append("'" + QDate::currentDate().toString("yyyy-MM-dd") + "', ");
             consulta.append(ui->anoEdicaoSB->text()  + ", ");
 
@@ -92,6 +111,11 @@ void CadastroExemplarDLG::cadastrar()
             else
             {
                 QMessageBox::information(this, tr("Cadastro efetuado"), tr("Exemplar cadastrado"), QMessageBox::Ok);
+                ui->anoEdicaoSB->setValue(0);
+                ui->cativoCB->setChecked(false);
+                ui->idPublicacaoSB->setValue(0);
+                ui->isbnSB->setValue(0);
+                ui->quantidadeFacSB->setValue(0);
             }
 
         }

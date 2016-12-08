@@ -43,9 +43,10 @@ public:
     {
         if (LoginDLG->objectName().isEmpty())
             LoginDLG->setObjectName(QStringLiteral("LoginDLG"));
-        LoginDLG->resize(260, 425);
-        LoginDLG->setMinimumSize(QSize(260, 425));
-        LoginDLG->setMaximumSize(QSize(260, 425));
+        LoginDLG->setWindowModality(Qt::NonModal);
+        LoginDLG->resize(260, 350);
+        LoginDLG->setMinimumSize(QSize(260, 350));
+        LoginDLG->setMaximumSize(QSize(260, 350));
         verticalLayout_4 = new QVBoxLayout(LoginDLG);
         verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
         verticalLayout_3 = new QVBoxLayout();

@@ -23,6 +23,7 @@ private slots:
 
 private:
     Ui::devolucaoDlg *ui;
+    int valor;
 };
 
 #endif // DEVOLUCAODLG_H

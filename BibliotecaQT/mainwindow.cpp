@@ -19,9 +19,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    //Instanciando os modelos de tabela sql
     this->tableModelUsuario = new QSqlQueryModel(ui->usuarioTable);
     this->tableModelPublicacao = new QSqlQueryModel(ui->publicacoesTable);
+    this->tableModelEmprestimo = new QSqlQueryModel(ui->emprestimoTable);
 
+    /*
     QPixmap search_user(":/resources/imgs/search_user.png");
     QIcon ico(search_user);
     ui->usuariosCadastradosBTN->setIcon(ico);
@@ -36,18 +40,13 @@ MainWindow::MainWindow(QWidget *parent) :
     QIcon ico3(loan_document);
     ui->emprestimosBTN->setIcon(ico3);
     ui->emprestimosBTN->setIconSize(loan_document.rect().size());
-
+    */
 
 
     connect(ui->actionUsuario, SIGNAL(triggered(bool)), this, SLOT(janelaCadastrarUsuario()));//COMANDO PARA ABRIR OUTRA JANELA - TIPO REFERENCIAR OUTRA JANELA
     connect(ui->actionAlunoEmp,SIGNAL(triggered()),this,SLOT(janelaEmprestimoAluno()));
     connect(ui->actionProfessorEmp,SIGNAL(triggered()),this,SLOT(janelaEmprestimoProf()));
-<<<<<<< HEAD
-    connect(ui->menuAjuda, SIGNAL(aboutToHide()), this, SLOT(janelaAjuda()));
-=======
-    connect(ui->menuAjuda, SIGNAL(aboutToShow()), this, SLOT(janelaAjuda()));
-    connect(ui->menuDevolucao, SIGNAL(aboutToShow()), this, SLOT(janelaDevolucao());
->>>>>>> origin/master
+    connect(ui->menuDevolucao, SIGNAL(aboutToShow()), this, SLOT(janelaDevolucao()));
 
     connect(ui->usuariosCadastradosBTN, SIGNAL(clicked()), this, SLOT(paginaUsuarios()));//usuariosCadastradosBTN É UM BOTAO QUANDO APERTADO VAI ABRIR A PAGINA paginaUsuarios
     connect(ui->emprestimosBTN, SIGNAL(clicked()), this, SLOT(paginaEmprestimos()));//SIGNAL É APOREÇÃO FEITA COM O SLOT QUE É APGINA
@@ -55,6 +54,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->buscarUsuarioBTN, SIGNAL(clicked()), this, SLOT(buscarUsuarios()));
     connect(ui->buscarPublicacoesBTN, SIGNAL(clicked(bool)), this, SLOT(buscarPublicacoes()));
+    connect(ui->buscarEmprestimosBTN, SIGNAL(clicked(bool)), this, SLOT(buscarEmprestimos()));
 
     connect(ui->tipoDeBuscaUsuarioCB, SIGNAL(currentTextChanged(QString)), this, SLOT(tipoDeBuscaUsuario()));
     connect(ui->tipoDeBuscaPublicacaoCB, SIGNAL(currentTextChanged(QString)), this, SLOT(tipoDeBuscaPublicacao()));
@@ -110,10 +110,9 @@ void MainWindow::janelaAjuda()
 }
 void MainWindow::janelaDevolucao()
 {
-    devolucaoDlg* janela = new devolucao();
+    devolucaoDlg* janela = new devolucaoDlg();
     janela->exec();
 }
-
 
 
 //Execução de instruções sql
@@ -145,19 +144,20 @@ void MainWindow::executarBuscaPorUsuario(QString consulta)
     }
     else
     {
-        //Relacionar a table para receber dados de uma pesquisa SQL
+        //Relacionar a tabela para receber dados de uma pesquisa SQL
         this->tableModelUsuario->setQuery(*qry);
 
+        //Renomenando os titulos das columas
         for (int i = 0; i < headers.size(); ++i)
             this->tableModelUsuario->setHeaderData(i, Qt::Horizontal, headers.at(i));
 
+        //Passando o modelo com os dados para tabela dos usarios
         ui->usuarioTable->setModel(this->tableModelUsuario);
         ui->usuarioTable->resizeColumnsToContents();
     }
 
     delete qry;
 }
-
 void MainWindow::executarBuscaPorPublicacao(QString consulta)
 {
 
@@ -195,7 +195,6 @@ void MainWindow::executarBuscaPorPublicacao(QString consulta)
 
     delete qry;
 }
-
 void MainWindow::executarBuscaPorEmprestimo(QString consulta)
 {
     /*
@@ -242,14 +241,15 @@ void MainWindow::executarBuscaPorEmprestimo(QString consulta)
             this->tableModelEmprestimo->setHeaderData(i, Qt::Horizontal, headers.at(i));
 
         ui->emprestimoTable->setModel(this->tableModelEmprestimo);
-        ui->publicacoesTable->resizeColumnsToContents();
+        ui->emprestimoTable->resizeColumnsToContents();
+        ui->emprestimoTable->resizeRowsToContents();
     }
 
     delete qry;
 }
 
 
-//Montando instrução sql
+//Montando instruções sql
 void MainWindow::buscarUsuarios()
 {
     switch (ui->tipoDeBuscaUsuarioCB->currentIndex()) {
@@ -330,10 +330,46 @@ void MainWindow::buscarPublicacoes()
 }
 void MainWindow::buscarEmprestimos()
 {
+    /*
+     *  +-------------------+-------------+------+-----+---------+----------------+
+        | Field             | Type        | Null | Key | Default | Extra          |
+        +-------------------+-------------+------+-----+---------+----------------+
+        | id                | int(11)     | NO   | PRI | NULL    | auto_increment |
+        | id_exemplar       | int(11)     | YES  | MUL | NULL    |                |
+        | id_usuario        | int(11)     | YES  | MUL | NULL    |                |
+        | data_emprestimo   | date        | NO   |     | NULL    |                |
+        | data_devedevolver | date        | NO   |     | NULL    |                |
+        | data_devolvido    | date        | YES  |     | NULL    |                |
+        | qtd_renovacao     | int(11)     | NO   |     | NULL    |                |
+        | situacao          | varchar(45) | YES  |     | NULL    |                |
+        +-------------------+-------------+------+-----+---------+----------------+
+     */
+
     switch (ui->tipoDeBuscaEmprestimoCB->currentIndex()) {
-    case 0:
+    case 0: //Tudo
     {
         QString consulta = "SELECT * FROM emprestimo";
+        executarBuscaPorEmprestimo(consulta);
+        break;
+    }
+    case 1: //Nome do usuário
+    {
+        QString consulta = "SELECT * FROM emprestimo ";
+        consulta.append("WHERE id_usuario = (SELECT U.id FROM usuario as U WHERE U.nome LIKE '");
+        consulta.append(ui->pesquisaEmprestimoLE->text() + "%')");
+        executarBuscaPorEmprestimo(consulta);
+
+        break;
+    }
+    case 2: //Id do exemplar
+    {
+        QString consulta = "SELECT * FROM emprestimo WHERE id_exemplar = '" + ui->pesquisaEmprestimoLE->text() + "'";
+        executarBuscaPorEmprestimo(consulta);
+        break;
+    }
+    case 3: //Titulo do livro
+    {
+        QString consulta = "SELECT E.* FROM emprestimo as E, exemplar as EX, publicacao as P WHERE E.id_exemplar = EX.id AND EX.id_publicacao = P.id AND P.titulo like '" + ui->pesquisaEmprestimoLE->text() +"%'";
         executarBuscaPorEmprestimo(consulta);
         break;
     }
@@ -342,21 +378,19 @@ void MainWindow::buscarEmprestimos()
     }
 }
 
-//Tipos de buscas
+//Verificando qual o tipo de busca foi excolhido
 void MainWindow::tipoDeBuscaUsuario()
 {
     if(ui->tipoDeBuscaUsuarioCB->currentText() != "Todos"){
         ui->pesquisaUsuarioLE->setEnabled(true);
-        ui->restricaoDeBuscaUsuarioLB->setText(ui->tipoDeBuscaUsuarioCB->currentText());
     }
     else{
         ui->pesquisaUsuarioLE->setEnabled(false);
-        ui->restricaoDeBuscaUsuarioLB->setText(ui->tipoDeBuscaUsuarioCB->currentText());
     }
 
+    ui->restricaoDeBuscaUsuarioLB->setText(ui->tipoDeBuscaUsuarioCB->currentText());
     ui->pesquisaUsuarioLE->setText("");
 }
-
 void MainWindow::tipoDeBuscaPublicacao()
 {
     if(ui->tipoDeBuscaPublicacaoCB->currentText() != "Todas"){
@@ -368,20 +402,16 @@ void MainWindow::tipoDeBuscaPublicacao()
 
     ui->pesquisaPublicacaoLE->setText("");
 }
-
 void MainWindow::tipoDeBuscaEmprestimo()
 {
     if(ui->tipoDeBuscaEmprestimoCB->currentText() != "Tudo"){
         ui->pesquisaEmprestimoLE->setEnabled(true);
+
     }
     else{
         ui->pesquisaEmprestimoLE->setEnabled(false);
     }
 
+    ui->restricaoPesquisaEmprestimoLB->setText(ui->tipoDeBuscaEmprestimoCB->currentText());
     ui->pesquisaEmprestimoLE->setText("");
 }
-
-
-
-
-

@@ -2,6 +2,7 @@
 #define CADASTROUSUARIODLG_H
 
 #include <QDialog>
+#include <QModelIndex>
 
 namespace Ui {
 class CadastroUsuarioDLG;
@@ -17,7 +18,6 @@ public:
 
 private:
     Ui::CadastroUsuarioDLG *ui;
-
     void carregarCursos();
 
 private slots:

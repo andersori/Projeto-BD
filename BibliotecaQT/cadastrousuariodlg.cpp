@@ -107,7 +107,7 @@ void CadastroUsuarioDLG::cadastrar()
     QString consulta;
 
 
-    if(ui->nomeLE->text() == "" || ui->emailLE->text() == "" || ui->dataNascimentoDATE->text() == "" || ui->cidadeLE->text() == "")
+    if(ui->nomeLE->text() == "" || ui->emailLE->text() == "" || ui->dataNascimentoDATE->text() == "" || ui->cidadeLE->text() == "" || ui->informacaoLE->text() == "")
     {
         QMessageBox::warning(this, tr("Erro de inserção"),tr("Falta informações"),QMessageBox::Ok);
     }

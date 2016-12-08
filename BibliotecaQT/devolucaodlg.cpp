@@ -9,7 +9,7 @@ devolucaoDlg::devolucaoDlg(QWidget *parent) :
 
     connect(ui->buscarBtn, SIGNAL(clicked()), this, SLOT(buscarLivro()));
     connect(ui->cancelarBtn, SIGNAL(clicked()), this, SLOT(close()));
-    connect(ui->devolverbtn, SIGNAL(clicked()), this, SLOT(devolver()));
+    connect(ui->devolverBtn, SIGNAL(clicked()), this, SLOT(devolver()));
 }
 
 devolucaoDlg::~devolucaoDlg()

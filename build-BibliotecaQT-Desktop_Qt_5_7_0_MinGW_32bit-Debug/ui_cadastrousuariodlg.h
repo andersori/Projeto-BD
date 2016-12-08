@@ -351,7 +351,7 @@ public:
 
     void retranslateUi(QDialog *CadastroUsuarioDLG)
     {
-        CadastroUsuarioDLG->setWindowTitle(QApplication::translate("CadastroUsuarioDLG", "Dialog", 0));
+        CadastroUsuarioDLG->setWindowTitle(QApplication::translate("CadastroUsuarioDLG", "Cadastro de Usu\303\241rio", 0));
         infP->setText(QApplication::translate("CadastroUsuarioDLG", "Informa\303\247\303\265es pessoais", 0));
         nomeLB->setText(QApplication::translate("CadastroUsuarioDLG", "Nome*", 0));
         emailLB->setText(QApplication::translate("CadastroUsuarioDLG", "E-mail*", 0));

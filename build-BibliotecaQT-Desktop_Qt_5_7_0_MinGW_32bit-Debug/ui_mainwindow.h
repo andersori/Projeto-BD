@@ -9,13 +9,11 @@
 #ifndef UI_MAINWINDOW_H
 #define UI_MAINWINDOW_H
 
-#include <QtCore/QDate>
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QComboBox>
-#include <QtWidgets/QDateEdit>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -87,12 +85,8 @@ public:
     QLabel *label_4;
     QComboBox *tipoDeBuscaEmprestimoCB;
     QSpacerItem *horizontalSpacer_7;
-    QHBoxLayout *horizontalLayout_7;
-    QLabel *label_6;
-    QSpacerItem *horizontalSpacer;
-    QDateEdit *dataEmprestimo;
     QHBoxLayout *horizontalLayout_9;
-    QLabel *label_7;
+    QLabel *restricaoPesquisaEmprestimoLB;
     QLineEdit *pesquisaEmprestimoLE;
     QPushButton *buscarEmprestimosBTN;
     QTableView *emprestimoTable;
@@ -333,37 +327,13 @@ public:
 
         verticalLayout_5->addLayout(horizontalLayout_8);
 
-        horizontalLayout_7 = new QHBoxLayout();
-        horizontalLayout_7->setSpacing(6);
-        horizontalLayout_7->setObjectName(QStringLiteral("horizontalLayout_7"));
-        label_6 = new QLabel(emprestimoPG);
-        label_6->setObjectName(QStringLiteral("label_6"));
-
-        horizontalLayout_7->addWidget(label_6);
-
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_7->addItem(horizontalSpacer);
-
-        dataEmprestimo = new QDateEdit(emprestimoPG);
-        dataEmprestimo->setObjectName(QStringLiteral("dataEmprestimo"));
-        dataEmprestimo->setMinimumDateTime(QDateTime(QDate(2000, 1, 1), QTime(0, 0, 0)));
-        dataEmprestimo->setMinimumDate(QDate(2000, 1, 1));
-        dataEmprestimo->setCalendarPopup(true);
-        dataEmprestimo->setDate(QDate(2000, 1, 6));
-
-        horizontalLayout_7->addWidget(dataEmprestimo);
-
-
-        verticalLayout_5->addLayout(horizontalLayout_7);
-
         horizontalLayout_9 = new QHBoxLayout();
         horizontalLayout_9->setSpacing(6);
         horizontalLayout_9->setObjectName(QStringLiteral("horizontalLayout_9"));
-        label_7 = new QLabel(emprestimoPG);
-        label_7->setObjectName(QStringLiteral("label_7"));
+        restricaoPesquisaEmprestimoLB = new QLabel(emprestimoPG);
+        restricaoPesquisaEmprestimoLB->setObjectName(QStringLiteral("restricaoPesquisaEmprestimoLB"));
 
-        horizontalLayout_9->addWidget(label_7);
+        horizontalLayout_9->addWidget(restricaoPesquisaEmprestimoLB);
 
         pesquisaEmprestimoLE = new QLineEdit(emprestimoPG);
         pesquisaEmprestimoLE->setObjectName(QStringLiteral("pesquisaEmprestimoLE"));
@@ -419,7 +389,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        paginas->setCurrentIndex(3);
+        paginas->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -435,9 +405,9 @@ public:
         actionAlunoEmp->setText(QApplication::translate("MainWindow", "Aluno", 0));
         actionProfessorEmp->setText(QApplication::translate("MainWindow", "Professor", 0));
         actionUsuario->setText(QApplication::translate("MainWindow", "Usu\303\241rio", 0));
-        usuariosCadastradosBTN->setText(QString());
-        publicacoesBTN->setText(QString());
-        emprestimosBTN->setText(QString());
+        usuariosCadastradosBTN->setText(QApplication::translate("MainWindow", "Usu\303\241rios", 0));
+        publicacoesBTN->setText(QApplication::translate("MainWindow", "Publicac\303\265es", 0));
+        emprestimosBTN->setText(QApplication::translate("MainWindow", "Emprestimos", 0));
         label->setText(QApplication::translate("MainWindow", "Pagina de Usu\303\241rios", 0));
         buscarPorLB->setText(QApplication::translate("MainWindow", "Busca por", 0));
         tipoDeBuscaUsuarioCB->clear();
@@ -446,7 +416,7 @@ public:
          << QApplication::translate("MainWindow", "Nome", 0)
          << QApplication::translate("MainWindow", "E-mail", 0)
         );
-        restricaoDeBuscaUsuarioLB->setText(QApplication::translate("MainWindow", "Tudos", 0));
+        restricaoDeBuscaUsuarioLB->setText(QApplication::translate("MainWindow", "Todos", 0));
         buscarUsuarioBTN->setText(QApplication::translate("MainWindow", "Buscar", 0));
         label_2->setText(QApplication::translate("MainWindow", "Pagina de publia\303\247\303\265es", 0));
         label_5->setText(QApplication::translate("MainWindow", "Bucar por", 0));
@@ -468,8 +438,7 @@ public:
          << QApplication::translate("MainWindow", "Id do exemplar", 0)
          << QApplication::translate("MainWindow", "T\303\255tulo do Livro", 0)
         );
-        label_6->setText(QApplication::translate("MainWindow", "Definir data", 0));
-        label_7->setText(QApplication::translate("MainWindow", "TextLabel", 0));
+        restricaoPesquisaEmprestimoLB->setText(QApplication::translate("MainWindow", "Tudo", 0));
         buscarEmprestimosBTN->setText(QApplication::translate("MainWindow", "Buscar", 0));
         menuCadastro->setTitle(QApplication::translate("MainWindow", "Cadastro", 0));
         menuEmprestimo->setTitle(QApplication::translate("MainWindow", "Emprestimo", 0));

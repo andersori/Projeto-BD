@@ -18,7 +18,7 @@ LoginDLG::LoginDLG(QWidget *parent) :
     ui(new Ui::LoginDLG)
 {
     ui->setupUi(this);
-
+    this->setWindowFlags(Qt::FramelessWindowHint);
     QPixmap pix(":/resources/imgs/users.png");  //Pegando o caminho da imagem
     ui->iconeLB->setPixmap(pix);                //colocando num label da janela de login
 

@@ -9,6 +9,7 @@ INPUT(
 ./release/cadastrousuariodlg.o
 ./release/devolucaodlg.o
 ./release/cadastroexemplardlg.o
+./release/renovarlivro.o
 ./release/qrc_resources.o
 ./release/moc_mainwindow.o
 ./release/moc_logindlg.o
@@ -18,4 +19,5 @@ INPUT(
 ./release/moc_cadastrousuariodlg.o
 ./release/moc_devolucaodlg.o
 ./release/moc_cadastroexemplardlg.o
+./release/moc_renovarlivro.o
 );

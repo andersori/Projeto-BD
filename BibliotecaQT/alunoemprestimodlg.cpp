@@ -8,7 +8,7 @@
 #include <QMessageBox>
 #include <QDate>
 
-QString codigoLivro;
+QString codLivro;
 QString matricula;
 
 AlunoEmprestimoDLG::AlunoEmprestimoDLG(QWidget *parent) :
@@ -29,9 +29,9 @@ AlunoEmprestimoDLG::~AlunoEmprestimoDLG(){
 }
 void AlunoEmprestimoDLG::buscarLivro(){
     QSqlDatabase bd = ConnectionDB::get_bd();
-    codigoLivro=ui->codLivroAl->text();//PEGO O COD DO LIVRO DIGITADO PELO USUARIO
+    codLivro=ui->codLivroAl->text();//PEGO O COD DO LIVRO DIGITADO PELO USUARIO
 
-    QString cons("select *from emprestimo where id_exemplar="+codigoLivro);//VERIFICAR SE ESTE LIVRO ESTAR EMPRESTADO
+    QString cons("select *from emprestimo where id_exemplar="+codLivro);//VERIFICAR SE ESTE LIVRO ESTAR EMPRESTADO
     QSqlQuery veriIdEmprestado=bd.exec(cons);
     veriIdEmprestado.next();
     if(!veriIdEmprestado.value(0).isNull()){
@@ -39,7 +39,7 @@ void AlunoEmprestimoDLG::buscarLivro(){
         return;
     }
 
-    QString qry("SELECT titulo FROM publicacao WHERE id = "+codigoLivro);
+    QString qry("SELECT titulo FROM publicacao WHERE id = "+codLivro);
     QSqlQuery resul=bd.exec(qry);
     if(resul.next()){//SE TIVER RESULTADO ENTRA AQUI
         QString consulta=resul.value(0).toString();//CONSULTO O NOME DO LIVRO PELO CODIGO
@@ -122,7 +122,7 @@ void AlunoEmprestimoDLG::efetuarEmprestimoAl(){
     QSqlQuery tent;
     tent.prepare("INSERT INTO emprestimo(id_exemplar,id_usuario,data_emprestimo,data_devedevolver,qtd_renovacao)"
                  "VALUES(:id_exemplar,:id_usuario,:data_emprestimo,:data_devedevolver, :qtd_renovacao)");
-    tent.bindValue(":id_exemplar",codigoLivro);
+    tent.bindValue(":id_exemplar",codLivro);
     tent.bindValue(":id_usuario",id_usuario);
     tent.bindValue(":data_emprestimo",data);
     tent.bindValue(":data_devedevolver",dataDevolver);

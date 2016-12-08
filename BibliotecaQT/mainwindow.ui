@@ -382,6 +382,7 @@
     </property>
     <addaction name="actionUsuario"/>
     <addaction name="actionPublicacao"/>
+    <addaction name="actionExemplar"/>
    </widget>
    <widget class="QMenu" name="menuEmprestimo">
     <property name="title">
@@ -449,8 +450,30 @@
     <string>Usuário</string>
    </property>
   </action>
+  <action name="actionExemplar">
+   <property name="text">
+    <string>Exemplar</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>pesquisaUsuarioLE</tabstop>
+  <tabstop>buscarUsuarioBTN</tabstop>
+  <tabstop>tipoDeBuscaUsuarioCB</tabstop>
+  <tabstop>usuarioTable</tabstop>
+  <tabstop>usuariosCadastradosBTN</tabstop>
+  <tabstop>publicacoesBTN</tabstop>
+  <tabstop>emprestimosBTN</tabstop>
+  <tabstop>tipoDeBuscaPublicacaoCB</tabstop>
+  <tabstop>pesquisaPublicacaoLE</tabstop>
+  <tabstop>buscarPublicacoesBTN</tabstop>
+  <tabstop>publicacoesTable</tabstop>
+  <tabstop>tipoDeBuscaEmprestimoCB</tabstop>
+  <tabstop>pesquisaEmprestimoLE</tabstop>
+  <tabstop>buscarEmprestimosBTN</tabstop>
+  <tabstop>emprestimoTable</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

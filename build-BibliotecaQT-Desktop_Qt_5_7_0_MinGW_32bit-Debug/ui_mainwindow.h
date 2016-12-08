@@ -42,6 +42,7 @@ public:
     QAction *actionAlunoEmp;
     QAction *actionProfessorEmp;
     QAction *actionUsuario;
+    QAction *actionExemplar;
     QWidget *centralWidget;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout;
@@ -117,6 +118,8 @@ public:
         actionProfessorEmp->setObjectName(QStringLiteral("actionProfessorEmp"));
         actionUsuario = new QAction(MainWindow);
         actionUsuario->setObjectName(QStringLiteral("actionUsuario"));
+        actionExemplar = new QAction(MainWindow);
+        actionExemplar->setObjectName(QStringLiteral("actionExemplar"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         horizontalLayout = new QHBoxLayout(centralWidget);
@@ -376,6 +379,20 @@ public:
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         MainWindow->setStatusBar(statusBar);
+        QWidget::setTabOrder(pesquisaUsuarioLE, buscarUsuarioBTN);
+        QWidget::setTabOrder(buscarUsuarioBTN, tipoDeBuscaUsuarioCB);
+        QWidget::setTabOrder(tipoDeBuscaUsuarioCB, usuarioTable);
+        QWidget::setTabOrder(usuarioTable, usuariosCadastradosBTN);
+        QWidget::setTabOrder(usuariosCadastradosBTN, publicacoesBTN);
+        QWidget::setTabOrder(publicacoesBTN, emprestimosBTN);
+        QWidget::setTabOrder(emprestimosBTN, tipoDeBuscaPublicacaoCB);
+        QWidget::setTabOrder(tipoDeBuscaPublicacaoCB, pesquisaPublicacaoLE);
+        QWidget::setTabOrder(pesquisaPublicacaoLE, buscarPublicacoesBTN);
+        QWidget::setTabOrder(buscarPublicacoesBTN, publicacoesTable);
+        QWidget::setTabOrder(publicacoesTable, tipoDeBuscaEmprestimoCB);
+        QWidget::setTabOrder(tipoDeBuscaEmprestimoCB, pesquisaEmprestimoLE);
+        QWidget::setTabOrder(pesquisaEmprestimoLE, buscarEmprestimosBTN);
+        QWidget::setTabOrder(buscarEmprestimosBTN, emprestimoTable);
 
         menuBar->addAction(menuCadastro->menuAction());
         menuBar->addAction(menuEmprestimo->menuAction());
@@ -383,6 +400,7 @@ public:
         menuBar->addAction(menuAjuda->menuAction());
         menuCadastro->addAction(actionUsuario);
         menuCadastro->addAction(actionPublicacao);
+        menuCadastro->addAction(actionExemplar);
         menuEmprestimo->addAction(actionAlunoEmp);
         menuEmprestimo->addAction(actionProfessorEmp);
 
@@ -404,6 +422,7 @@ public:
         actionAlunoEmp->setText(QApplication::translate("MainWindow", "Aluno", 0));
         actionProfessorEmp->setText(QApplication::translate("MainWindow", "Professor", 0));
         actionUsuario->setText(QApplication::translate("MainWindow", "Usu\303\241rio", 0));
+        actionExemplar->setText(QApplication::translate("MainWindow", "Exemplar", 0));
         usuariosCadastradosBTN->setText(QApplication::translate("MainWindow", "Usu\303\241rios", 0));
         publicacoesBTN->setText(QApplication::translate("MainWindow", "Publicac\303\265es", 0));
         emprestimosBTN->setText(QApplication::translate("MainWindow", "Emprestimos", 0));

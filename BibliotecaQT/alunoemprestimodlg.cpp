@@ -28,9 +28,17 @@ AlunoEmprestimoDLG::~AlunoEmprestimoDLG(){
     delete ui;
 }
 void AlunoEmprestimoDLG::buscarLivro(){
-    ui->tituloLivroAl->setEnabled(true);//ATIVANDO O CAMPO DO TITULO DO LIVRO
     QSqlDatabase bd = ConnectionDB::get_bd();
     codigoLivro=ui->codLivroAl->text();//PEGO O COD DO LIVRO DIGITADO PELO USUARIO
+
+    QString cons("select *from emprestimo where id_exemplar="+codigoLivro);//VERIFICAR SE ESTE LIVRO ESTAR EMPRESTADO
+    QSqlQuery veriIdEmprestado=bd.exec(cons);
+    veriIdEmprestado.next();
+    if(!veriIdEmprestado.value(0).isNull()){
+        QMessageBox::warning(this,tr("LIVRO JÁ FOI EMPRESTADO"),tr("ESTE ID PERTENCE A UM LIVRO AINDA EM EMPRÉSTIMO"));
+        return;
+    }
+
     QString qry("SELECT titulo FROM publicacao WHERE id = "+codigoLivro);
     QSqlQuery resul=bd.exec(qry);
     if(resul.next()){//SE TIVER RESULTADO ENTRA AQUI
@@ -41,28 +49,46 @@ void AlunoEmprestimoDLG::buscarLivro(){
     }else{
         QMessageBox::warning(this,tr("ERRO"),tr("NÃO EXISTE LIVRO COM ESTE CÓDIGO, CADASTRADO."));
         ui->codLivroAl->clear();
-        ui->tituloLivroAl->setEnabled(false);
     }
 }
 void AlunoEmprestimoDLG::buscarMatAl(){
-    ui->nomeAluno->setEnabled(true);
     QSqlDatabase bd = ConnectionDB::get_bd();
     matricula=ui->matAluno->text();
+
+    //pegando o id do usuario pela matricula dele
+    QString consulId("SELECT id_usuario FROM aluno WHERE matricula="+matricula);
+    QSqlQuery IdUsuario=bd.exec(consulId);
+    IdUsuario.next();
+    QString id=IdUsuario.value(0).toString();
+
+    //VERIFICO SE O CARA JÁ TEM 15 EMPRESTIMO, MAXIMO PERMITIDO
+    QString qtdEmprestimo("select count(*) from emprestimo where id_usuario="+id+" AND data_devolvido is null");
+    QSqlQuery quantidade=bd.exec(qtdEmprestimo);
+    quantidade.next();
+    int quant= quantidade.value(0).toInt();
+    if(quant>=10){//SE TIVER DEZ EMPRESTIMO, CANCELA
+        QMessageBox::warning(this,tr("ERRO"),tr("USUÁRIO TEM 10 OU MAIS EMPRÉSTIMOS EM ABERTO"));
+        return;
+    }
+
+    //PEGANDO O NOME DO USUARIO PELA MATRICULA
     QString qry("SELECT U.nome FROM aluno as A, usuario as U WHERE A.id_usuario=U.id AND A.matricula= "+matricula);//PRECISA ALTERAR
     QSqlQuery resul=bd.exec(qry);
     if(resul.next()){
         QString consulta=resul.value(0).toString();
-        ui->nomeAluno->setText(consulta);
+       // ui->nomeAluno->setText(consulta);
         ui->pushButton_3->setEnabled(true);
     }else{
         QMessageBox::warning(this,tr("ERRO"),tr("NÃO EXISTE ALUNO COM ESTA MATRÍCULA, CADASTRADO."));
         ui->nomeAluno->clear();
         ui->matAluno->clear();
-        ui->nomeAluno->setEnabled(false);
     }
 }
+
 void AlunoEmprestimoDLG::efetuarEmprestimoAl(){
     QSqlDatabase bd = ConnectionDB::get_bd();
+
+    //PEGANDO O ID DO USUARIO COM A MATRICULA DIGITADA
     QString qry("SELECT id_usuario FROM aluno WHERE matricula="+matricula);
     QSqlQuery busca=bd.exec(qry);
     busca.next();
@@ -80,8 +106,6 @@ void AlunoEmprestimoDLG::efetuarEmprestimoAl(){
                 ui->matAluno->clear();
                 ui->nomeAluno->clear();
                 ui->tituloLivroAl->clear();
-                ui->tituloLivroAl->setEnabled(false);
-                ui->nomeAluno->setEnabled(false);
                 ui->matAluno->setEnabled(false);
                 ui->pushButton_3->setEnabled(false);
                 ui->buscButton_2Al->setEnabled(false);
@@ -113,8 +137,6 @@ void AlunoEmprestimoDLG::efetuarEmprestimoAl(){
         ui->matAluno->clear();
         ui->nomeAluno->clear();
         ui->tituloLivroAl->clear();
-        ui->tituloLivroAl->setEnabled(false);
-        ui->nomeAluno->setEnabled(false);
         ui->matAluno->setEnabled(false);
         ui->pushButton_3->setEnabled(false);
         ui->buscButton_2Al->setEnabled(false);
@@ -128,8 +150,6 @@ void AlunoEmprestimoDLG::efetuarEmprestimoAl(){
         ui->matAluno->clear();
         ui->nomeAluno->clear();
         ui->tituloLivroAl->clear();
-        ui->tituloLivroAl->setEnabled(false);
-        ui->nomeAluno->setEnabled(false);
         ui->matAluno->setEnabled(false);
         ui->pushButton_3->setEnabled(false);
         ui->buscButton_2Al->setEnabled(false);

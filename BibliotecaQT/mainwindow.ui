@@ -381,7 +381,6 @@
      <string>Cadastro</string>
     </property>
     <addaction name="actionUsuario"/>
-    <addaction name="actionFuncionario"/>
     <addaction name="actionPublicacao"/>
    </widget>
    <widget class="QMenu" name="menuEmprestimo">

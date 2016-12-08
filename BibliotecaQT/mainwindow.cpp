@@ -7,6 +7,7 @@
 #include "ajudadlg.h"
 #include "devolucaodlg.h"
 #include "cadastroexemplardlg.h"
+#include "cadastropublicacaodlg.h"
 
 #include <QDebug>
 #include <QPixmap>
@@ -49,7 +50,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionProfessorEmp,SIGNAL(triggered()),this,SLOT(janelaEmprestimoProf()));
     connect(ui->menuDevolucao, SIGNAL(aboutToShow()), this, SLOT(janelaDevolucao()));
     connect(ui->actionExemplar, SIGNAL(triggered(bool)), this, SLOT(janelaExemplar()));
-
+    connect(ui->actionPublicacao, SIGNAL(triggered(bool)),this,SLOT(janelaCadastrarPublicacao()));
     connect(ui->usuariosCadastradosBTN, SIGNAL(clicked()), this, SLOT(paginaUsuarios()));//usuariosCadastradosBTN É UM BOTAO QUANDO APERTADO VAI ABRIR A PAGINA paginaUsuarios
     connect(ui->emprestimosBTN, SIGNAL(clicked()), this, SLOT(paginaEmprestimos()));//SIGNAL É APOREÇÃO FEITA COM O SLOT QUE É APGINA
     connect(ui->publicacoesBTN, SIGNAL(clicked()), this, SLOT(paginaPublicacoes()));
@@ -93,6 +94,11 @@ void MainWindow::paginaEmprestimos()
 void MainWindow::janelaCadastrarUsuario()
 {
     CadastroUsuarioDLG *janela = new CadastroUsuarioDLG();
+    janela->exec();
+}
+void MainWindow::janelaCadastrarPublicacao()
+{
+    CadastroPublicacaoDLG *janela=new CadastroPublicacaoDLG();
     janela->exec();
 }
 void MainWindow::janelaEmprestimoAluno()

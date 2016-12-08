@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     ajudadlg.cpp \
     cadastrousuariodlg.cpp \
     devolucaodlg.cpp \
-    cadastroexemplardlg.cpp
+    cadastroexemplardlg.cpp \
+    cadastropublicacaodlg.cpp
 
 HEADERS  += mainwindow.h \
     logindlg.h \
@@ -31,7 +32,8 @@ HEADERS  += mainwindow.h \
     ajudadlg.h \
     cadastrousuariodlg.h \
     devolucaodlg.h \
-    cadastroexemplardlg.h
+    cadastroexemplardlg.h \
+    cadastropublicacaodlg.h
 
 FORMS    += mainwindow.ui \
     logindlg.ui \
@@ -40,7 +42,8 @@ FORMS    += mainwindow.ui \
     ajudadlg.ui \
     cadastrousuariodlg.ui \
     devolucaodlg.ui \
-    cadastroexemplardlg.ui
+    cadastroexemplardlg.ui \
+    cadastropublicacaodlg.ui
 
 RESOURCES += \
     resources.qrc

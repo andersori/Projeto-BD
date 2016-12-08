@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>CadastroPublicacaodlg</class>
- <widget class="QDialog" name="CadastroPublicacaodlg">
+ <class>CadastroPublicacaoDLG</class>
+ <widget class="QDialog" name="CadastroPublicacaoDLG">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -17,7 +17,7 @@
    <item>
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>Cadastro de Publicação</string>
+      <string>Cadastro de publicação</string>
      </property>
     </widget>
    </item>
@@ -31,7 +31,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit"/>
+      <widget class="QLineEdit" name="TituloLE"/>
      </item>
     </layout>
    </item>
@@ -45,7 +45,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_2"/>
+      <widget class="QLineEdit" name="subLE"/>
      </item>
     </layout>
    </item>
@@ -59,7 +59,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_3"/>
+      <widget class="QLineEdit" name="edLE"/>
      </item>
     </layout>
    </item>
@@ -73,7 +73,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_4"/>
+      <widget class="QLineEdit" name="MidLE"/>
      </item>
     </layout>
    </item>
@@ -87,23 +87,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="comboBox">
-       <item>
-        <property name="text">
-         <string>Livro</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Revista</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Publicação</string>
-        </property>
-       </item>
-      </widget>
+      <widget class="QLineEdit" name="TipLE"/>
      </item>
     </layout>
    </item>
@@ -117,21 +101,34 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_6"/>
+      <widget class="QLineEdit" name="volLE"/>
      </item>
     </layout>
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_7">
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="cad">
        <property name="text">
         <string>Cadastrar</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="can">
        <property name="text">
         <string>Cancelar</string>
        </property>

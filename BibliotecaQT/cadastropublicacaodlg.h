@@ -4,19 +4,22 @@
 #include <QDialog>
 
 namespace Ui {
-class CadastroPublicacaodlg;
+class CadastroPublicacaoDLG;
 }
 
-class CadastroPublicacaodlg : public QDialog
+class CadastroPublicacaoDLG : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit CadastroPublicacaodlg(QWidget *parent = 0);
-    ~CadastroPublicacaodlg();
+    explicit CadastroPublicacaoDLG(QWidget *parent = 0);
+    ~CadastroPublicacaoDLG();
 
 private:
-    Ui::CadastroPublicacaodlg *ui;
+    Ui::CadastroPublicacaoDLG *ui;
+private slots:
+    void cadastrarp();
 };
+
 
 #endif // CADASTROPUBLICACAODLG_H

@@ -35,6 +35,7 @@ private slots:
     void janelaAjuda();
     void janelaDevolucao();
     void janelaExemplar();
+    void janelaCadastrarPublicacao();
 
     //Mudar as paginas dentro do main
     void paginaUsuarios();

@@ -91,7 +91,7 @@ public:
 
     void retranslateUi(QDialog *AlunoEmprestimoDLG)
     {
-        AlunoEmprestimoDLG->setWindowTitle(QApplication::translate("AlunoEmprestimoDLG", "Dialog", 0));
+        AlunoEmprestimoDLG->setWindowTitle(QApplication::translate("AlunoEmprestimoDLG", "Emp\303\251stimo", 0));
         label->setText(QApplication::translate("AlunoEmprestimoDLG", "C\303\263digo do livro", 0));
         label_2->setText(QApplication::translate("AlunoEmprestimoDLG", "Matr\303\255cula do aluno", 0));
         label_3->setText(QApplication::translate("AlunoEmprestimoDLG", "Nome do aluno", 0));

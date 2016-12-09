@@ -96,6 +96,7 @@ public:
     QMenu *menuEmprestimo;
     QMenu *menuDevolucao;
     QMenu *menuAjuda;
+    QMenu *Renovar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -372,6 +373,8 @@ public:
         menuDevolucao->setObjectName(QStringLiteral("menuDevolucao"));
         menuAjuda = new QMenu(menuBar);
         menuAjuda->setObjectName(QStringLiteral("menuAjuda"));
+        Renovar = new QMenu(menuBar);
+        Renovar->setObjectName(QStringLiteral("Renovar"));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -398,6 +401,7 @@ public:
         menuBar->addAction(menuEmprestimo->menuAction());
         menuBar->addAction(menuDevolucao->menuAction());
         menuBar->addAction(menuAjuda->menuAction());
+        menuBar->addAction(Renovar->menuAction());
         menuCadastro->addAction(actionUsuario);
         menuCadastro->addAction(actionPublicacao);
         menuCadastro->addAction(actionExemplar);
@@ -462,6 +466,7 @@ public:
         menuEmprestimo->setTitle(QApplication::translate("MainWindow", "Emprestimo", 0));
         menuDevolucao->setTitle(QApplication::translate("MainWindow", "Devolu\303\247\303\243o", 0));
         menuAjuda->setTitle(QApplication::translate("MainWindow", "Ajuda", 0));
+        Renovar->setTitle(QApplication::translate("MainWindow", "Renovar", 0));
     } // retranslateUi
 
 };

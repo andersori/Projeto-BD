@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     cadastrousuariodlg.cpp \
     devolucaodlg.cpp \
     cadastroexemplardlg.cpp \
-    cadastropublicacaodlg.cpp
+    cadastropublicacaodlg.cpp \
+    ../../../../Desktop/Teste Banco de dados/BibliotecaQT/renovarlivro.cpp
 
 HEADERS  += mainwindow.h \
     logindlg.h \
@@ -33,7 +34,8 @@ HEADERS  += mainwindow.h \
     cadastrousuariodlg.h \
     devolucaodlg.h \
     cadastroexemplardlg.h \
-    cadastropublicacaodlg.h
+    cadastropublicacaodlg.h \
+    ../../../../Desktop/Teste Banco de dados/BibliotecaQT/renovarlivro.h
 
 FORMS    += mainwindow.ui \
     logindlg.ui \
@@ -43,7 +45,8 @@ FORMS    += mainwindow.ui \
     cadastrousuariodlg.ui \
     devolucaodlg.ui \
     cadastroexemplardlg.ui \
-    cadastropublicacaodlg.ui
+    cadastropublicacaodlg.ui \
+    ../../../../Desktop/Teste Banco de dados/BibliotecaQT/renovarlivro.ui
 
 RESOURCES += \
     resources.qrc

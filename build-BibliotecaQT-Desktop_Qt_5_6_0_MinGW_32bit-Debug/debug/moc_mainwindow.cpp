@@ -6,7 +6,7 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../BibliotecaQT/mainwindow.h"
+#include "../../../../../Desktop/Teste Banco de dados/BibliotecaQT/mainwindow.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
@@ -20,7 +20,7 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
     QByteArrayData data[18];
-    char stringdata0[312];
+    char stringdata0[300];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -37,22 +37,22 @@ QT_MOC_LITERAL(4, 57, 20), // "janelaEmprestimoProf"
 QT_MOC_LITERAL(5, 78, 11), // "janelaAjuda"
 QT_MOC_LITERAL(6, 90, 15), // "janelaDevolucao"
 QT_MOC_LITERAL(7, 106, 14), // "janelaExemplar"
-QT_MOC_LITERAL(8, 121, 25), // "janelaCadastrarPublicacao"
-QT_MOC_LITERAL(9, 147, 14), // "paginaUsuarios"
-QT_MOC_LITERAL(10, 162, 17), // "paginaPublicacoes"
-QT_MOC_LITERAL(11, 180, 17), // "paginaEmprestimos"
-QT_MOC_LITERAL(12, 198, 14), // "buscarUsuarios"
-QT_MOC_LITERAL(13, 213, 17), // "buscarPublicacoes"
-QT_MOC_LITERAL(14, 231, 17), // "buscarEmprestimos"
-QT_MOC_LITERAL(15, 249, 18), // "tipoDeBuscaUsuario"
-QT_MOC_LITERAL(16, 268, 21), // "tipoDeBuscaPublicacao"
-QT_MOC_LITERAL(17, 290, 21) // "tipoDeBuscaEmprestimo"
+QT_MOC_LITERAL(8, 121, 13), // "janelaRenovar"
+QT_MOC_LITERAL(9, 135, 14), // "paginaUsuarios"
+QT_MOC_LITERAL(10, 150, 17), // "paginaPublicacoes"
+QT_MOC_LITERAL(11, 168, 17), // "paginaEmprestimos"
+QT_MOC_LITERAL(12, 186, 14), // "buscarUsuarios"
+QT_MOC_LITERAL(13, 201, 17), // "buscarPublicacoes"
+QT_MOC_LITERAL(14, 219, 17), // "buscarEmprestimos"
+QT_MOC_LITERAL(15, 237, 18), // "tipoDeBuscaUsuario"
+QT_MOC_LITERAL(16, 256, 21), // "tipoDeBuscaPublicacao"
+QT_MOC_LITERAL(17, 278, 21) // "tipoDeBuscaEmprestimo"
 
     },
     "MainWindow\0janelaCadastrarUsuario\0\0"
     "janelaEmprestimoAluno\0janelaEmprestimoProf\0"
     "janelaAjuda\0janelaDevolucao\0janelaExemplar\0"
-    "janelaCadastrarPublicacao\0paginaUsuarios\0"
+    "janelaRenovar\0paginaUsuarios\0"
     "paginaPublicacoes\0paginaEmprestimos\0"
     "buscarUsuarios\0buscarPublicacoes\0"
     "buscarEmprestimos\0tipoDeBuscaUsuario\0"
@@ -124,7 +124,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 3: _t->janelaAjuda(); break;
         case 4: _t->janelaDevolucao(); break;
         case 5: _t->janelaExemplar(); break;
-        case 6: _t->janelaCadastrarPublicacao(); break;
+        case 6: _t->janelaRenovar(); break;
         case 7: _t->paginaUsuarios(); break;
         case 8: _t->paginaPublicacoes(); break;
         case 9: _t->paginaEmprestimos(); break;

@@ -6,7 +6,7 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../BibliotecaQT/logindlg.h"
+#include "../../../../../Desktop/Teste Banco de dados/BibliotecaQT/logindlg.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
